@@ -1,0 +1,29 @@
+.Header 
+  .HeaderInside
+    .HeaderMain
+      .Icon
+        = link_to "#" do
+          = image_tag 'logo.png', :size =>'140x41', class: 'Icon__logo'
+      .SearchBox
+        = form_with(method: :get, class: "form") do |form|
+          = form.text_field :text, placeholder: "キーワードから探す", class: "input"
+          = button_tag type: 'submit', class: 'btn' do
+            .Searchbox__icon
+              = link_to "#" do
+                = image_tag 'icon-search 1.png', :size =>'20x20'
+    .Nav
+      %ul.ListLeft
+        %li.ListLeft__item1
+          %a{href: "", class: "category"}カテゴリー
+          
+        .ListLeft__item2
+          = link_to "#", class:"brand" do
+            ブランド
+      %ul.ListRight
+        -# user_signed_in? マイページ
+        %li.ListRight__item1
+          = link_to "#", class:"login" do
+            ログイン
+        %li.ListRight__item2
+          = link_to "#", class:"new" do
+            新規会員登録
