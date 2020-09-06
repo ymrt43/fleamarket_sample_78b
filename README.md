@@ -54,7 +54,7 @@
 |------|----|-------|
 |name|string|null: false|
 |description|text|null: false|
-|categoty_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
 |brand|string||
 |state|int|null: false|
 |fee|int|null: false|
