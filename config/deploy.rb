@@ -1,7 +1,7 @@
 lock "3.14.1"
 
-set :application, 'furimapp'
-set :repo_url,  'git@github.com:ymrt43/furimapp.git'
+set :application, 'fleamarket_sample_78b'
+set :repo_url,  'git@github.com:ymrt43/fleamarket_sample_78b.git'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
