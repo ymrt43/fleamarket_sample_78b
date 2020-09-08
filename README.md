@@ -11,9 +11,14 @@
 |age|int|null: false|
 
 ### Association
+- has_one :profile
+- has_one :address
+- has_many :cregitcards
+- has_many :comments
 - has_many :items
 
-## identificationsテーブル
+
+## profilesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |familyname|string|null: false|
@@ -65,6 +70,7 @@
 
 ### Association
 - has_many :images
+- has_many :comments
 - belongs_to :user
 - belongs_to :category
 
@@ -80,10 +86,20 @@
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|url|string|null: false|
+|name|string|null: false|
 |parent_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :items
 - belongs_to :parent, class_name: :category
 - has_many :children, class_name: :category, foreign_key: parent_id
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|message|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
