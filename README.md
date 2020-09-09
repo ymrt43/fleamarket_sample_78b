@@ -8,12 +8,12 @@
 |nickname|string|null: false|
 |email|string|null: false, unique:true|
 |password|string|null: false|
-|age|int|null: false|
+|age|integer|null: false|
 
 ### Association
 - has_one :profile
 - has_one :address
-- has_many :cregitcards
+- has_many :creditcards
 - has_many :comments
 - has_many :items
 
@@ -34,7 +34,7 @@
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|postalcode|int|null: false|
+|postalcode|integer|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
 |block|string|null: false|
@@ -45,7 +45,7 @@
 ### Association
 - belongs_to :user
 
-## cregitcardsテーブル
+## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |info|string|null: false|
@@ -61,11 +61,11 @@
 |description|text|null: false|
 |category_id|integer|null: false, foreign_key: true|
 |brand|string||
-|state|int|null: false|
-|fee|int|null: false|
-|area|int|null: false|
-|term|int|null: false|
-|price|int|null: false|
+|state|integer|null: false|
+|fee|integer|null: false|
+|area|integer|null: false|
+|term|integer|null: false|
+|price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
