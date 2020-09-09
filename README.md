@@ -37,9 +37,9 @@
 |postalcode|integer|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
-|block|string|null: false|
-|etc|string|null: false|
-|dialnumber|date|null: false|
+|house_number|string|null: false|
+|building_name|string||
+|dial_number|integer||
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
@@ -77,7 +77,7 @@
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|url|string|null: false|
+|text|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
