@@ -87,12 +87,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|parent_id|integer|null: false, foreign_key: true|
+|ancestry|string||
 
 ### Association
 - has_many :items
-- belongs_to :parent, class_name: :category
-- has_many :children, class_name: :category, foreign_key: parent_id
+- has_ancestry
 
 ## commentsテーブル
 |Column|Type|Options|
