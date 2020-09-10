@@ -1,24 +1,104 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# DB設計
 
-Things you may want to cover:
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, unique:true|
+|password|string|null: false|
+|age|integer|null: false|
 
-* Ruby version
+### Association
+- has_one :profile
+- has_one :address
+- has_many :creditcards
+- has_many :comments
+- has_many :items
 
-* System dependencies
 
-* Configuration
+## profilesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|familyname|string|null: false|
+|firstname|string|null: false|
+|familykana|string|null: false|
+|firstkana|string|null: false|
+|birthdate|date|null: false|
+|user_id|integer|null: false, foreign_key: true|
 
-* Database creation
+### Association
+- belongs_to :user
 
-* Database initialization
+## addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|postalcode|integer|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|house_number|string|null: false|
+|building_name|string||
+|dial_number|integer||
+|user_id|integer|null: false, foreign_key: true|
 
-* How to run the test suite
+### Association
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
+## creditcardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|info|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
 
-* Deployment instructions
+### Association
+- belongs_to :user
 
-* ...
+## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|description|text|null: false|
+|category_id|integer|null: false, foreign_key: true|
+|brand|string||
+|state|integer|null: false|
+|fee|integer|null: false|
+|area|integer|null: false|
+|term|integer|null: false|
+|price|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- has_many :images
+- has_many :comments
+- belongs_to :user
+- belongs_to :category
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|string|null: false|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :item
+
+## categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|ancestry|string||
+
+### Association
+- has_many :items
+- has_ancestry
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|message|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
