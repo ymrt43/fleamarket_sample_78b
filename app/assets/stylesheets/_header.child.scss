@@ -22,7 +22,11 @@
   letter-spacing: 2px;
   text-decoration-line: none;
   border-bottom: whitesmoke solid 0.2px;
-  @include hover__color(orange, white, 1);
+  &:hover{
+    color: orange;
+    background-color: white;
+    opacity: 1;
+  }
 }
 
 .categories{
@@ -38,8 +42,12 @@
         font-size: 12px;
         letter-spacing: 2px;
         text-decoration-line: none;
-        @include hover__color(orange,white, 1);
         border-bottom: whitesmoke solid 0.2px;
+        &:hover{
+          color: orange;
+          background-color: white;
+          opacity: 1;
+        }
       }
       li {
         &:hover{
