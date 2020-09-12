@@ -439,8 +439,8 @@ baby_kids_8 = baby_kids.children.create(name: "子ども用ファッション小
 baby_kids_8.children.create([{name: "靴下/スパッツ"},
                             {name: "帽子"},
                             {name: "エプロン"},
-                            {name: "サスペンダー"}
-                            ,{name: "タイツ"},
+                            {name: "サスペンダー"},
+                            {name: "タイツ"},
                             {name: "ハンカチ"},
                             {name: "バンダナ"},
                             {name: "ベルト"},
