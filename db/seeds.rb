@@ -496,7 +496,7 @@ interior_residence_accessory = Category.create(name: "インテリア・住ま�
 interior_residence_accessory_1 = interior_residence_accessory.children.create(name: "キッチン/食器")
 interior_residence_accessory_1.children.create([{name: "食器"},
                                                 {name: "調理器具"},
-                                                {name: "収納/キッチン雑貨"}
+                                                {name: "収納/キッチン雑貨"},
                                                 {name: "弁当用品"},
                                                 {name: "カトラリー(スプーン等)"},
                                                 {name: "テーブル用品"},
