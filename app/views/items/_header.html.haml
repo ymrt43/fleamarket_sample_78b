@@ -14,9 +14,7 @@
     .Nav
       %ul.ListLeft
         %li.ListLeft__item1
-          %a{href: "", class: "category"}カテゴリー
-          -# 以下atag使用の可能性あるのでコメントアウト
-          -# %a{href: "", class: "category"}カテゴリー
+          = render partial: 'items/header.child'
           
         .ListLeft__item2
           = link_to "#", class:"brand" do

@@ -1,8 +1,10 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "mixin";
 @import "items";
 @import "header";
+@import "header.child";
 @import "appBanner";
 @import "footer";
 @import "display";
