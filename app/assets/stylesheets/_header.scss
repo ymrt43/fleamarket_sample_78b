@@ -55,40 +55,20 @@
       .ListLeft {
         position: relative;
         display: flex;
-        &__item1 {
-          display: flex;
-          line-height: 38px;
-          .category {
-            color: #333;
-            text-decoration: none;
-            line-height: 32px;
-            background-position: center right;
-            background-repeat: 18px;
-            padding-right: 30px;
-            &:hover{
-              color: orange;
-              background-color: white;
-              opacity: 1;
-            }
-          }
-        }
-
-
-        
         &__item2 {
           display: flex;
           line-height: 38px;
           padding: 0 0 0 16px;
           .brand {
-            color: #333;
+            color: #333333;
             text-decoration: none;
             line-height: 32px;
             background-position: center right;
             background-repeat: 18px;
             padding-right: 30px;
             &:hover{
-              color: orange;
-              background-color: white;
+              color: #FFA500;
+              background-color: #ffffff;
               opacity: 1;
             }
           }
@@ -98,35 +78,35 @@
         margin-left: auto;
         display: flex;
         &__item1 {
-          color: #333;
+          color: #333333;
           line-height: 38px;
           padding: 0 0 0 16px;
           .login {
             display: flex;
             align-items: center;
-            color: #333;
+            color: #333333;
             text-decoration: none;
             line-height: 32px;
             &:hover{
-              color: orange;
-              background-color: white;
+              color: #FFA500;
+              background-color: #ffffff;
               opacity: 1;
             }
           }
         }
         &__item2 {
-          color: #333;
+          color: #333333;
           line-height: 38px;
           padding: 0 0 0 16px;
           .new {
             display: flex;
             align-items: center;
-            color: #333;
+            color: #333333;
             text-decoration: none;
             line-height: 32px;
             &:hover{
-              color: orange;
-              background-color: white;
+              color: #FFA500;
+              background-color: #ffffff;
               opacity: 1;
             }
           }

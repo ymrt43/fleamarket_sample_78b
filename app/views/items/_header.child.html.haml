@@ -1,20 +1,22 @@
 .categories
-  %ul.ListLeft
-    %li.ListLeft__item1
-      = link_to "#", class: "category" do
-        カテゴリー
-      %ul.category__parent.category__list
-        - @parents.each do |parent|
-          %li
-            = link_to "#", class: "category__parent--name" do
-              = parent.name
-            %ul.category__child.category__list
-              - parent.children.each do |child|
-                %li
-                  = link_to "#", class: "category__child--name" do
-                    = child.name
-                  %ul.category__grandchild.category__list
-                    - child.children.each do |grandchild|
-                      %li
-                        = link_to "#", class: " category__child--name" do
-                          = grandchild.name 
+  %li.ListLeft__item1
+    = link_to "#", class: "category" do
+      カテゴリー
+    %ul.category__parent.category__list 
+      -# 複数クラスを設定
+      - @parents.each do |parent|
+        -# @parentsという配列をeach分で一つずつ表示して埋め込んでいます。
+        %li
+          = link_to "#", class: "category__parent--name" do
+            = parent.name
+          %ul.category__child.category__list
+            - parent.children.each do |child|
+              -# ancestryを入れると使用することのできるchidlenメソッドを使用して子要素を取得しeachメソッドで一つずつ表示します
+              %li
+                = link_to "#", class: "category__child--name" do
+                  = child.name
+                %ul.category__grandchild.category__list
+                  - child.children.each do |grandchild|
+                    %li
+                      = link_to "#", class: " category__child--name" do
+                        = grandchild.name 

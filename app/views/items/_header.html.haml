@@ -13,10 +13,9 @@
                 = image_tag 'icon-search 1.png', :size =>'20x20'
     .Nav
       %ul.ListLeft
-        %li.ListLeft__item1
-          = render partial: 'items/header.child'
+        = render partial: 'items/header.child'
           
-        .ListLeft__item2
+        %li.ListLeft__item2
           = link_to "#", class:"brand" do
             ブランド
       %ul.ListRight
