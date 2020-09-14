@@ -1,0 +1,22 @@
+.Auction
+  .AuctionField
+    .AuctionField__header
+      = link_to "/" do
+        = image_tag 'logo.png', width: '185', height: '49'
+    .AuctionField__body
+      出品入力エリアですよ
+    .AuctionField__footer
+      .Policies
+        %ul.Policies__list
+          %li.Policy
+            = link_to "#", class: "Policy__list" do
+              プライバシーポリシー
+          %li.Policy
+            = link_to "#", class: "Policy__list" do
+              FURIMA利用規約
+          %li.Policy
+            = link_to "#", class: "Policy__list" do
+              特定商取引に関する表記
+      = link_to "/" do
+        = image_tag 'logo-white.png', width: '120', height: '34.93', class: 'Logo__auction'
+      %p.sm © FURIMA
