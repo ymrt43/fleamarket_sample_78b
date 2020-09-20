@@ -1,0 +1,26 @@
+= render partial: 'items/header'
+
+%nav.BreadCrumbs
+  %ul
+    %li
+      = link_to "/" do
+        FURIMA
+    %i
+      = icon("fas", "angle-right")
+    %li
+      = link_to "#",class:'MyPage' do
+        マイページ
+
+.UsersMain
+  .UsersMain__contents
+    = render partial: 'users/rightTableInfo'
+    = render partial: 'users/rightTableBuy'
+      
+  = render partial: 'users/leftTable'
+  
+= render partial: 'items/appBanner'
+= render partial: 'items/display'
+= render partial: 'items/footer'
+
+
+

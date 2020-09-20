@@ -1,0 +1,45 @@
+.LeftContent {
+  width: 280px;
+  height: 800px;
+  float: left;
+  margin-right: 50px;
+  padding-top: 30px;
+  &__nav {
+    display: block;
+    p {
+      size: 15px;
+      font-weight: bold;
+      width: 280px;
+      height: 40px;
+      text-align: center;
+      color: #333333;
+    }
+    .MyPage-lists {
+      width: 280px;
+      height: 300px;
+      li {
+        display: flex;
+        border-bottom: 1px solid #333333;
+        .list-info {
+          width: 270px;
+          font-size: 14px;
+          line-height: 50px;
+          height: 50px;
+          color: #4e5863;
+          padding-left: 10px;
+          a {
+            text-decoration: none;
+            color: #4e5863;
+            cursor: pointer;
+          }
+        }
+        .icon {
+          width: 20px;
+          height: 50px;
+          line-height: 50px;
+          color: #333333;
+        }
+      }
+    }
+  }
+}

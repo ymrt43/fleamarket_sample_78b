@@ -1,0 +1,50 @@
+.LeftContent
+  .LeftContent__nav
+    %p 
+      マイページ
+    %ul.MyPage-lists
+      %li
+        .list-info
+          = link_to "#" do
+            出品する
+        %i.icon
+          = icon("fas", "angle-right")
+      %li
+        .list-info
+          = link_to "#" do
+            出品した商品
+        %i.icon
+          = icon("fas", "angle-right")
+      %li
+        .list-info
+          = link_to "#" do
+            購入した商品
+        %i.icon
+          = icon("fas", "angle-right")
+      %li
+        .list-info
+          = link_to "#" do
+            お問い合わせ
+        %i.icon
+          = icon("fas", "angle-right")
+      %li
+        .list-info
+          = link_to "#" do
+            お知らせ
+        %i.icon
+          = icon("fas", "angle-right")
+    %p 
+      設定
+      %ul.MyPage-lists
+        %li
+          .list-info
+            = link_to "/cards/new" do
+              クレジットカード詳細・削除
+          %i.icon
+            = icon("fas", "angle-right")
+        %li
+          .list-info
+            =link_to "/users/:id/edit" do
+              ログアウト
+          %i.icon
+            = icon("fas", "angle-right")

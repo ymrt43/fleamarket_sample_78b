@@ -1,0 +1,35 @@
+%section.UserInfo
+  .UserInfo__Content
+    = link_to "#" do
+      %figure 
+        = image_tag 'member_photo.png', size: '60x60', class:"user-img"
+      %p test_user
+.tabs
+  %input{checked: "checked",id:"all",type:"radio",name:"tab_item"}
+  %label.tab_item{for:"all"} お知らせ
+  %input{id:"programming",type:"radio",name:"tab_item"}
+  %label.tab_item{for:"programming"} やることリスト
+  .tab_content{id:"all_content"}
+    %ul.todo-lists
+      %li
+        .list-item
+          〇〇日までに、発送
+        %i.icon
+          = icon("fas","angle-right")
+      %li
+        .list-item
+          〇〇日までに、発送
+        %i.icon
+          = icon("fas", "angle-right")
+      %li
+        .list-item
+          〇〇日までに、発送
+        %i.icon
+          = icon("fas","angle-right")
+  .tab_content{id:"programming_content"}
+    %ul.todo-lists
+      %li
+        .list-item
+          ご登録のメールアドレスに認証メールを送りました。
+        %i.icon
+          = icon("fas", "angle-right")

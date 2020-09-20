@@ -1,0 +1,101 @@
+.CreditHeader 
+  .CreditHeader__Logo
+    = image_tag 'logo.png', :size =>'220x65', class: 'Icon'
+
+%nav.BreadCrumbs
+  %ul
+    %li
+      = link_to "/" do
+        FURIMA
+    %i
+      = icon("fas", "angle-right")
+    %li
+      = link_to "/users" do
+        マイページ
+    %i
+      = icon("fas", "angle-right")
+    %li
+      = link_to "#",class:'credit-info' do
+        クレジットカード情報入力
+
+.CreditContents
+  .TitleContent
+    .TitleContent__title
+      クレジットカード情報入力
+  .CreditContainer
+    .CreditContainer__Form
+      %label
+        カード番号
+      %span
+        必須
+      %input.Form{type:"text",name:"card_number",placeholder:"半角数字のみ"}
+      %ul.CardList
+        %li.icon-visa
+          = image_tag 'visa.svg', :size =>'44x22'
+        %li.icon-mastercard
+          = image_tag 'mastercard.svg', :size =>'44x22'
+        %li.icon-discover
+          = image_tag 'saison.svg', :size =>'44x22'
+        %li.icon-jcb
+          = image_tag 'jcb.svg', :size =>'44x22'
+        %li.icon-visa
+          = image_tag 'american_express.svg', :size =>'44x22'
+        %li.icon-visa
+          = image_tag 'dinersclub.svg', :size =>'44x22'
+        %li.icon-visa
+          = image_tag 'discover.svg', :size =>'44x22'
+    .CreditExpire
+      %label
+        有効期限
+      %span
+        必須
+      .CreditExpire__inputData
+        %select{id:"exp_month", name:"exp_month",type:"text"}
+          %option{label:"01", value:"1"}
+          %option{label:"02", value:"2"}
+          %option{label:"03", value:"3"}
+          %option{label:"04", value:"4"}
+          %option{label:"05", value:"5"}
+          %option{label:"06", value:"6"}
+          %option{label:"07", value:"7"}
+          %option{label:"08", value:"8"}
+          %option{label:"09", value:"9"}
+          %option{label:"10", value:"10"}
+          %option{label:"11", value:"11"}
+          %option{label:"12", value:"12"}
+        %label 月
+        %select{id:"exp_year", name:"exp_year",type:"text"}
+          %option{label:"20", value:"2020"}
+          %option{label:"21", value:"2021"}
+          %option{label:"22", value:"2022"}
+          %option{label:"23", value:"2023"}
+          %option{label:"24", value:"2024"}
+          %option{label:"25", value:"2025"}
+          %option{label:"26", value:"2026"}
+          %option{label:"27", value:"2027"}
+          %option{label:"28", value:"2028"}
+          %option{label:"29", value:"2029"}
+          %option{label:"30", value:"2030"}
+        %label 年
+    .CreditSecurity
+      %label
+        セキュリティコード
+      %span
+        必須
+      %input.Form{type:"text",placeholder:"カード背面４桁もしくは３桁の番号"}
+    .CreditAdd
+      .CreditAdd__Info
+        %span ?
+        %p カード裏面の番号とは？
+      
+      -#  実装が行えていない箇所
+      -# .CreditAdd__TokenInfo
+      -#   カードの裏面をご参照ください。
+      -#   = image_tag 'seq-card.png', :size =>'343x150'
+
+      %button.BtnStyle{type:"submit"}
+        追加する
+      = link_to "/users" do
+        もどる
+= render partial: 'items/appBanner'
+= render partial: 'items/footer'

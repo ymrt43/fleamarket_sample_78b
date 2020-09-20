@@ -1,0 +1,54 @@
+.BreadCrumbs {
+  height: 40px;
+  width: 100%;
+  padding: 0 50px;
+  border-top: 1px solid #eeeeee;
+  box-shadow: 0 3px 3px 0 rgba(248, 227, 227, 0.16);
+  position: relative;
+  background-color: #ffffff;
+  ul {
+    height: 40px;
+    width: 1155px;
+    margin: 0 auto;
+    display: flex;
+    line-height: 40px;
+    li {
+      margin-left: 5px;
+      font-size: 14px;
+      .MyPage {
+        font-weight: 600;
+      }
+      a {
+        text-decoration: none;
+        margin: 5px;
+        color: #4e5863;
+        i {
+          display: inline-block;
+          font-style: normal;
+          font-variant: normal;
+          text-rendering: auto;
+          line-height: 1;
+        }
+      }
+    }
+  }
+}
+
+.UsersMain {
+  height: 800px;
+  width: 1100px;
+  margin: 0 auto;
+  padding: 24px 0 40px 0;
+  &__contents {
+    float: right;
+    width: 700px;
+  }
+}
+
+
+
+
+
+
+
+
