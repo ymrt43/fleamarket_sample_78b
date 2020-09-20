@@ -13,11 +13,6 @@
 .tab2 {
   width: 700px;
   height: 70px;
-  /*選択されているタブのスタイルを変える*/
-  input:checked + .tab_item2 {
-    background-color: #5ab4bd;
-    color: #ffffff;
-  }
   .tab_item2 {
     width: calc(100% / 2);
     height: 70px;
@@ -35,6 +30,11 @@
     .tab_item2:hover {
       opacity: 0.75;
     }
+  }
+  /*選択されているタブのスタイルを変える*/
+  input:checked + .tab_item2 {
+    background-color: #5ab4bd;
+    color: #ffffff;
   }
 
   /*タブ切り替えの中身のスタイル*/
