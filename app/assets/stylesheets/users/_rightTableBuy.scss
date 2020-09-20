@@ -27,14 +27,14 @@
     font-weight: bold;
     transition: all 0.1s ease;
     cursor: pointer;
-    .tab_item2:hover {
-      opacity: 0.75;
-    }
   }
   /*選択されているタブのスタイルを変える*/
   input:checked + .tab_item2 {
     background-color: #5ab4bd;
     color: #ffffff;
+    .tab_item2:hover {
+      opacity: 0.75;
+    }
   }
 
   /*タブ切り替えの中身のスタイル*/
