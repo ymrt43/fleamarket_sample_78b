@@ -13,6 +13,11 @@
 .tab2 {
   width: 700px;
   height: 70px;
+  /*選択されているタブのスタイルを変える*/
+  input:checked + .tab_item2 {
+    background-color: #5ab4bd;
+    color: #ffffff;
+  }
   .tab_item2 {
     width: calc(100% / 2);
     height: 70px;
@@ -24,7 +29,6 @@
     color: #333333;
     display: block;
     float: left;
-    text-align: center;
     font-weight: bold;
     transition: all 0.1s ease;
     cursor: pointer;
@@ -70,10 +74,5 @@ input[name="tab_item2"] {
 #all2:checked ~ #all_content2,
 #programming2:checked ~ #programming_content2 {
   display: block;
-}
-/*選択されているタブのスタイルを変える*/
-.tab2 input:checked + .tab_item2 {
-  background-color: #5ab4bd;
-  color: #fff;
 }
 
