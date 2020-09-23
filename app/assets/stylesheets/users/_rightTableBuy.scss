@@ -1,62 +1,62 @@
-.product-buy {
+.RightTable2 {
   margin-top: 290px;
   width: 700px;
   max-width: 100%;
   background-color: #f3f3f3;
-  
-  p {
+  float: right;
+  &__title {
     padding: 0 16px;
     line-height: 55px;
     font-weight: bold;
   }
-}
-.tab2 {
-  width: 700px;
-  height: 70px;
-  .tab_item2 {
-    width: calc(100% / 2);
+  .Tab {
+    width: 700px;
     height: 70px;
-    border-bottom: 3px solid #5ab4bd;
-    background-color: #d9d9d9;
-    line-height: 70px;
-    font-size: 20px;
-    text-align: center;
-    color: #333333;
-    display: block;
-    float: left;
-    font-weight: bold;
-    transition: all 0.1s ease;
-    cursor: pointer;
-  }
-  /*選択されているタブのスタイルを変える*/
-  input:checked + .tab_item2 {
-    background-color: #5ab4bd;
-    color: #ffffff;
-    .tab_item2:hover {
-      opacity: 0.75;
+    &__title {
+      width: calc(100% / 2);
+      height: 70px;
+      border-bottom: 3px solid #5ab4bd;
+      background-color: #d9d9d9;
+      line-height: 70px;
+      font-size: 20px;
+      text-align: center;
+      color: #333333;
+      display: block;
+      float: left;
+      font-weight: bold;
+      transition: all 0.1s ease;
+      cursor: pointer;
     }
-  }
+    /*選択されているタブのスタイルを変える*/
+    &__btn:checked + .Tab__title {
+      background-color: #5ab4bd;
+      color: #ffffff;
+      .Tab__title:hover {
+        opacity: 0.75;
+      }
+    }
 
-  /*タブ切り替えの中身のスタイル*/
-  .tab_content2 {
-    height: 100px;
-    display: none;
-    clear: both;
-    overflow: hidden;
-    .todo-list2 {
-      width: 700px;
-      height: 80px;
-      li {
-        font-size: 14px;
-        line-height: 80px;
-        display: flex;
-        border-bottom: 1px solid black;
-        .list-item2 {
+    /*タブ切り替えの中身のスタイル*/
+    .TabContent {
+      height: 100px;
+      display: none;
+      clear: both;
+      overflow: hidden;
+      .TabMenu {
+        width: 700px;
+        height: 80px;
+        &__list {
+          font-size: 14px;
+          line-height: 80px;
+          display: flex;
+          border-bottom: 1px solid black;
+        }
+        &__item {
           width: 650px;
           color: #4e5863;
           padding-left: 10px;
         }
-        i {
+        &__icon {
           line-height: 80px;
           width: 50px;
           font-size: 20px;
@@ -65,14 +65,14 @@
       }
     }
   }
-}
-/*ラジオボタンを全て消す*/
-input[name="tab_item2"] {
-  display: none;
-}
-/*選択されているタブのコンテンツのみを表示*/
-#all2:checked ~ #all_content2,
-#programming2:checked ~ #programming_content2 {
-  display: block;
+  /*ラジオボタンを全て消す*/
+  input[name="tab_item2"] {
+    display: none;
+  }
+  /*選択されているタブのコンテンツのみを表示*/
+  #all2:checked ~ #all_content2,
+  #programming2:checked ~ #programming_content2 {
+    display: block;
+  }
 }
 

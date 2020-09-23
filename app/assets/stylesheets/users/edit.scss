@@ -6,48 +6,50 @@
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   position: relative;
   background-color: #ffffff;
-  ul {
+  .Menu {
     height: 40px;
     width: 1155px;
     margin: 0 auto;
     display: flex;
     line-height: 40px;
-    li {
+    &__list {
       margin-left: 5px;
       font-size: 14px;
-      .logout {
-        font-weight: 600;
+      text-decoration: none;
+      color: #4e5863;
+      &__icon {
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
       }
-      a {
-        text-decoration: none;
+      &--name {
         margin: 5px;
+      }
+      &--logout {
+        font-weight: 600;
+        text-decoration: none;
         color: #4e5863;
-        i {
-          display: inline-block;
-          font-style: normal;
-          font-variant: normal;
-          text-rendering: auto;
-          line-height: 1;
-        }
       }
     }
   }
 }
-.LogoutContent {
+.LogoutContainer {
   width: 100%;
   height: 300px;
   text-align: center;
   display: flex;
-  &__Container {
+  .LogoutContent {
     width: 700px;
     height: 200px;
     background-color: #f3f3f3;
     margin: auto auto ;
-    .SingleInner {
+    &__Btn{
       padding: 64px;
       margin: 0 120px;
       border-top: 1px solid #f5f5f5;
-      .BtnRed {
+      &--Blue {
         background:  #5ab4bd;
         border: 1px solid  #5ab4bd;
         color: #fff;

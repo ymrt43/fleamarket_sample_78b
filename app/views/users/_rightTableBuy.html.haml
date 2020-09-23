@@ -1,22 +1,21 @@
-%section.product-buy
-  %p 購入した商品
-.tab2
-  %input{checked: "checked",id:"all2",type:"radio",name:"tab_item2"}
-  %label.tab_item2{for:"all2"} 取引中
-  %input{id:"programming2",type:"radio",name:"tab_item2"}
-  %label.tab_item2{for:"programming2"} 過去の取引
-  .tab_content2{id:"all_content2"}
-    %ul.todo-list2
-      %li
-        .list-item2
-          レディース、Tシャツ（S）
-        %i.icon
-          = icon("fas","angle-right")
-      
-  .tab_content2{id:"programming_content2"}
-    %ul.todo-list2
-      %li
-        .list-item2
-          レディース、Tシャツ（S）
-        %i.icon
-          = icon("fas", "angle-right")
+.RightTable2
+  %p.RightTable2__title 購入した商品
+  .Tab
+    %input.Tab__btn{checked: "checked",id:"all2",type:"radio",name:"tab_item2"}
+    %label.Tab__title{for:"all2"} 取引中
+    %input.Tab__btn{id:"programming2",type:"radio",name:"tab_item2"}
+    %label.Tab__title{for:"programming2"} 過去の取引
+    .TabContent{id:"all_content2"}
+      %ul.TabMenu
+        %li.TabMenu__list
+          .TabMenu__item
+            レディース、Tシャツ（S）
+          %i.TabMenu__icon
+            = icon("fas","angle-right")
+    .TabContent{id:"programming_content2"}
+      %ul.TabMenu
+        %li.TabMenu__list
+          .TabMenu__item
+            レディース、Tシャツ（S）
+          %i.TabMenu__icon
+            = icon("fas", "angle-right")

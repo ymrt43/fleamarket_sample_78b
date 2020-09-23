@@ -1,50 +1,43 @@
-.LeftContent
-  .LeftContent__nav
-    %p 
+.LeftContainer
+  .MyPage
+    %p.MyPage__title
       マイページ
-    %ul.MyPage-lists
-      %li
-        .list-info
-          = link_to "#" do
-            出品する
-        %i.icon
+    %ul.MyPageMenu
+      %li.MyPageMenu__list
+        = link_to "#" ,class:"MyPageMenu__list--info" do
+          出品する
+        %i.MyPageMenu__icon
           = icon("fas", "angle-right")
-      %li
-        .list-info
-          = link_to "#" do
-            出品した商品
-        %i.icon
+      %li.MyPageMenu__list
+        = link_to "#", class:"MyPageMenu__list--info" do
+          出品した商品
+        %i.MyPageMenu__icon
           = icon("fas", "angle-right")
-      %li
-        .list-info
-          = link_to "#" do
-            購入した商品
-        %i.icon
+      %li.MyPageMenu__list
+        = link_to "#", class:"MyPageMenu__list--info" do
+          購入した商品
+        %i.MyPageMenu__icon
           = icon("fas", "angle-right")
-      %li
-        .list-info
-          = link_to "#" do
-            お問い合わせ
-        %i.icon
+      %li.MyPageMenu__list
+        = link_to "#",class:"MyPageMenu__list--info" do
+          お問い合わせ
+        %i.MyPageMenu__icon
           = icon("fas", "angle-right")
-      %li
-        .list-info
-          = link_to "#" do
-            お知らせ
-        %i.icon
+      %li.MyPageMenu__list
+        = link_to "#" ,class:"MyPageMenu__list--info"do
+          お知らせ
+        %i.MyPageMenu__icon
           = icon("fas", "angle-right")
-    %p 
+    %p.MyPage__title
       設定
-      %ul.MyPage-lists
-        %li
-          .list-info
-            = link_to "/cards/new" do
-              クレジットカード詳細・削除
-          %i.icon
+      %ul.MyPageMenu
+        %li.MyPageMenu__list
+          = link_to "/cards/new",class:"MyPageMenu__list--info"  do
+            クレジットカード詳細・削除
+          %i.MyPageMenu__icon
             = icon("fas", "angle-right")
-        %li
-          .list-info
-            =link_to "/users/:id/edit" do
-              ログアウト
-          %i.icon
+        %li.MyPageMenu__list
+          =link_to "/users/:id/edit",class:"MyPageMenu__list--info" do
+            ログアウト
+          %i.MyPageMenu__icon
             = icon("fas", "angle-right")
