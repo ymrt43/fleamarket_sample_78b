@@ -1,0 +1,65 @@
+.Auction
+  .AuctionField
+    .AuctionField__header
+      = link_to "/" do
+        = image_tag 'logo.png', width: '185', height: '49'
+    .AuctionField__body
+      %section.Item
+        %h2 購入内容の確認
+      %hr/
+      %section.Item
+        .Item__contents
+          .Item__image
+          .Item__info
+            .Item__name
+              3点セット セットアップ レディース ジャージ 上下セット ベスト
+            .Item__price
+              %p 送料込み（税込）
+              %span ¥3,710
+      %section.Item
+        .Item__contents
+          .Item__content
+            支払い金額
+          .Item__amount
+            ¥3,710
+      %hr/
+      %section.Item
+        .Item__pay
+          .Item__content--small
+            支払い方法
+          .Item__payEdit
+            変更する >
+        .Item__payInfo
+          %p クレジットカード
+          %p *************4242
+          %p 有効期限 01 / 25
+          %img(src="##" alt="クレジット種類")/
+      %hr/
+      %section.Item
+        .Item__pay
+          .Item__content--small
+            配送先
+          .Item__payEdit
+            変更する >
+        .Item__payInfo
+          %p 〒666-6666
+          %p 住所
+          %p ほげほげたろう
+      .FormBlock__btn
+        = f.submit "購入する", class: "FormBlock__btn--forSale"
+        = link_to 'もどる', :back, class: "FormBlock__btn--return"
+    .AuctionField__footer
+      .Policies
+        %ul.Policies__list
+          %li.Policy
+            = link_to "#", class: "Policy__list" do
+              プライバシーポリシー
+          %li.Policy
+            = link_to "#", class: "Policy__list" do
+              FURIMA利用規約
+          %li.Policy
+            = link_to "#", class: "Policy__list" do
+              特定商取引に関する表記
+      = link_to "/" do
+        = image_tag 'logo-white.png', width: '120', height: '34.93', class: 'Logo__auction'
+      %p.sm © FURIMA
