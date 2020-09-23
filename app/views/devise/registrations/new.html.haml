@@ -44,10 +44,5 @@
             = f.select :name, ["--"] | (1..31).to_a
             日
 
-        -# .FormField
-        -#   .FormField__label--normal
-        -#     = f.label :password_confirmation
-        -#   .FormField__input--normal
-        -#     = f.password_field :password_confirmation, autocomplete: "off"
         .actions
           = f.submit "登録", class: 'Button UserButton'
