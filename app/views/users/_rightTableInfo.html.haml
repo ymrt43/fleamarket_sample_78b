@@ -1,0 +1,34 @@
+.RightTable1
+  .UserInfo
+    .UserInfo__pic
+      = image_tag 'member_photo.png', size:'60x60', class:"img"
+    %p.UserInfo__name test_user
+  .Tab
+    %input.Tab__btn{checked: "checked",id:"all",type:"radio",name:"tab_item"}
+    %label.Tab__title{for:"all"} お知らせ
+    %input.Tab__btn{id:"programming",type:"radio",name:"tab_item"}
+    %label.Tab__title{for:"programming"} やることリスト
+    .TabContent{id:"all_content"}
+      %ul.TabMenu
+        %li.TabMenu__list
+          .TabMenu__item
+            〇〇日までに、発送
+          %i.TabMenu__icon
+            = icon("fas","angle-right")
+        %li.TabMenu__list
+          .TabMenu__item
+            〇〇日までに、発送
+          %i.TabMenu__icon
+            = icon("fas", "angle-right")
+        %li.TabMenu__list
+          .TabMenu__item
+            〇〇日までに、発送
+          %i.TabMenu__icon
+            = icon("fas","angle-right")
+    .TabContent{id:"programming_content"}
+      %ul.TabMenu
+        %li.TabMenu__list
+          .TabMenu__item
+            ご登録のメールアドレスに認証メールを送りました。
+          %i.TabMenu__icon
+            = icon("fas", "angle-right")
