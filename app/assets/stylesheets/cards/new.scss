@@ -1,0 +1,233 @@
+.CreditHeader {
+  width: 100%;
+  height: 130px;
+  background-color: #ffffff;
+  text-align: center;
+  .Logo {
+    &__icon {
+      margin: 35px auto;
+    }
+  }
+}
+
+.BreadCrumbs {
+  height: 40px;
+  width: 100%;
+  padding: 0 50px;
+  border-top: 1px solid #eeeeee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  background-color: #ffffff;
+  .Menu {
+    height: 40px;
+    width: 1155px;
+    margin: 0 auto;
+    display: flex;
+    line-height: 40px;
+    &__list {
+      margin-left: 5px;
+      font-size: 14px;
+      &__icon {
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+      }
+      &--name {
+        text-decoration: none;
+        margin: 5px;
+        color: #4e5863;
+      }
+      &--big {
+        font-weight: 600;
+        text-decoration: none;
+        color: #4e5863;
+      }
+    }
+  }
+}
+
+.CreditContainer {
+  width: 100%;
+  background-color: whitesmoke;
+  padding: 20px 0;
+  .Title {
+    width: 700px;
+    height: 80px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid #f3f3f3;
+    &__name {
+      padding: 25px 0;
+      font-weight: bold;
+      font-size: 22px;
+    }
+  }
+  .Contents {
+    width: 700px;
+    height: 700px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    .NrForm {
+      width: 350px;
+      height: 150px;
+      background-color: #ffffff;
+      margin: 0 auto;
+      padding: 10px 0;
+      &__title{
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      &__required {
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        font-size: 12px;
+        background-color: red;
+        color: #ffffff;
+      }
+      &__input {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 48px;
+        width: 350px;
+        margin: 10px 0;
+        padding: 0 16px;
+        outline: none;
+      }
+      .CardsIcon {
+        display: flex;
+        margin-top: 5px;
+      }
+    }
+    .ExpireForm {
+      width: 350px;
+      height: 120px;
+      background-color: #ffffff;
+      margin: 0 auto;
+      padding: 10px 0;
+      &__title {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      &__required {
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        font-size: 12px;
+        background-color: red;
+        color: #ffffff;
+      }
+      .Input {
+        margin: 16px 0;
+        display: flex;
+        text-align: center;
+        .InputMenu {
+          text-align: center;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          color: #807c7c;
+          font-size: 16px;
+          height: 48px;
+          line-height: 1;
+          margin: 0;
+          outline: none;
+          padding: 0 56px 0 16px;
+          width: 100%;
+        }
+        &__date {
+          margin: 10px 10px ;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+    }
+    .SecurityForm {
+      width: 350px;
+      height: 100px;
+      background-color: #ffffff;
+      margin: 0 auto;
+      padding: 10px 0;
+      &__title {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      &__required {
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        font-size: 12px;
+        background-color: red;
+        color: #ffffff;
+      }
+      &__input {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 48px;
+        width: 350px;
+        margin: 10px 0;
+        padding: 0 16px;
+        outline: none;
+      }
+    }
+    .Token {
+      width: 350px;
+      height: 30px;
+      margin: 0 auto;
+      padding: 10px 0;
+      .TokenInfo {
+        width: 350px;
+        margin: 0 auto;
+        color: #5ab4bd;
+        text-align: right;
+        &__icon {
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #5ab4bd;
+          color: #ffffff;
+          line-height: 14px;
+          font-size: 12px;
+          text-align: center;
+        }
+        &__about {
+          color: #5ab4bd;
+          cursor: pointer;
+          display: inline;
+        }
+      }
+    }
+    .Btn {
+      width: 350px;
+      margin: 0 auto;
+      &__title {
+        width: 100%;
+        background-color: #ea352d;
+        color: #fff;
+        margin-top: 24px;
+        font-size: 17px;
+        min-height: 48px;
+        padding: 0 24px;
+        font-weight: bold;
+        border-radius: 4px;
+        outline: none;
+        border: 1px solid #ccc;
+      }
+      &__back {
+        margin-top: 24px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        color:  #5ab4bd;
+      }
+    }
+  }
+}
