@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit] 
   resources :cards, only: [:new, :show, :destroy] 
   resources :items, only: [:index, :new]
+  get 'items_buy', to: 'items#buy'
 end
