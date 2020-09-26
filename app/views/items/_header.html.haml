@@ -21,8 +21,8 @@
       %ul.ListRight
         -# user_signed_in? マイページ
         %li.ListRight__item1
-          = link_to "#", class:"login" do
+          = link_to user_session_path, class:"login" do
             ログイン
         %li.ListRight__item2
-          = link_to "#", class:"new" do
+          = link_to new_user_registration_path, class:"new" do
             新規会員登録
