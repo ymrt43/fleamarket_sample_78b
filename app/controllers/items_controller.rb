@@ -6,4 +6,8 @@ class ItemsController < ApplicationController
   def new
   end
   
+  def show
+    @parents = Category.where(ancestry: nil)
+  end
+  
 end
