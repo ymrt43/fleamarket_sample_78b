@@ -1,11 +1,9 @@
 .AccountMain
-  - @parents = Category.where(ancestry: nil)
   = render partial: 'items/header'
   .AccountPage
     .AccountPage__form
       %h2 会員情報入力 (1/2)
       = render "devise/shared/error_messages"
-      -# = form_with model: @user, url: user_registration_path, id: 'new_user', local: true do |f|
       = form_with url: profiles_path, id: 'new_user', local: true do |f|
         = devise_error_messages!
         .FormField
