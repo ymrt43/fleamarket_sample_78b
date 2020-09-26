@@ -4,50 +4,56 @@
       = link_to "/" do
         = image_tag 'logo.png', width: '185', height: '49'
     .AuctionField__body
-      %section.Item
-        %h2 購入内容の確認
-      %hr/
-      %section.Item
-        .Item__contents
-          .Item__image
-          .Item__info
-            .Item__name
-              3点セット セットアップ レディース ジャージ 上下セット ベスト
-            .Item__price
-              %p 送料込み（税込）
-              %span ¥3,710
-      %section.Item
-        .Item__contents
-          .Item__content
-            支払い金額
-          .Item__amount
-            ¥3,710
-      %hr/
-      %section.Item
-        .Item__pay
-          .Item__content--small
-            支払い方法
-          .Item__payEdit
-            変更する >
-        .Item__payInfo
-          %p クレジットカード
-          %p *************4242
-          %p 有効期限 01 / 25
-          %img(src="##" alt="クレジット種類")/
-      %hr/
-      %section.Item
-        .Item__pay
-          .Item__content--small
-            配送先
-          .Item__payEdit
-            変更する >
-        .Item__payInfo
-          %p 〒666-6666
-          %p 住所
-          %p ほげほげたろう
-      .FormBlock__btn
-        = f.submit "購入する", class: "FormBlock__btn--forSale"
-        = link_to 'もどる', :back, class: "FormBlock__btn--return"
+      %section.ItemContainer
+        %h2
+          購入内容の確認
+      %section.ItemContainer
+        .ItemContainer__contents
+          .ItemContainer__imageField
+            %figure.ItemContainer__imageField--image
+              = image_tag 'product1.jpg', alt: "美味しそうな肉", class: 'ItemContainer__imageField--picture'
+          .ItemContainer__itemInfo
+            %p.ItemContainer__itemName
+              美味しいhoge牛コース 食事券 hogeホテル 使用期限2020年末まで
+            %p.ItemContainer__itemPrice
+              %span.ItemContainer__itemPrice--label 送料込み（税込）
+              %span.ItemContainer__itemPrice--price ¥12,000
+      %section.ItemContainer
+        .ItemContainer__contents
+          %span.ItemContainer__totalPrice--label 支払い金額
+          %span.ItemContainer__totalPrice--price ¥12,000
+      %section.ItemContainer
+        .ItemContainer__contentsTag
+          .ItemContainer__contents
+            %h3.ItemContainer__label
+              支払い方法
+            = link_to '###', class: 'Link__blue' do
+              変更する >
+          .ItemContainer__payInfo
+            %p クレジットカード
+            %p *************4242
+            %p
+              %span 有効期限&nbsp;
+              %span 01/25
+            = image_tag 'visa.svg', alt: 'visa', height: '22', width: '44', class: 'ItemContainer__payInfo--card'
+      %section.ItemContainer
+        .ItemContainer__contentsTag
+          .ItemContainer__contents
+            %h3.ItemContainer__label
+              配送先
+            = link_to '###', class: 'Link__blue' do
+              変更する >
+          .ItemContainer__payInfo
+            %p 〒444-4444
+            %p hoge府hoge市hogehoge4-44-44 hogehogehoge404
+            %p hoge本hoge子
+      %section.ItemContainer
+        .ItemContainer__btn
+          .FormBlock__btn
+            =link_to '###', class: 'BuyItem' do
+              %button.ItemContainer__btn--buy
+                購入する
+          = link_to 'もどる', :back, class: "FormBlock__btn--return"
     .AuctionField__footer
       .Policies
         %ul.Policies__list

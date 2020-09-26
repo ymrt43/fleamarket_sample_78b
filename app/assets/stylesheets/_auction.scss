@@ -72,6 +72,24 @@ hr {
   }
 }
 
+// オークション実行ボタン
+@mixin auctionBtn($wid: 360px) {
+  width: $wid;
+  background-color: #3CCACE;
+  color: #ffffff;
+  font-size: 17px;
+  min-height: 48px;
+  padding: 0 24px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: .3s;
+  &:hover {
+    opacity: 0.8;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
+  }
+}
+
 // リンク設定
 .Link__blue {
   @include linkHo();
@@ -145,21 +163,8 @@ hr {
   &__btn {
     margin: 0px auto 32px;
     text-align: center;
-    &--forSale {
-      background-color: #ea352d;
-      color: #ffffff;
-      font-size: 17px;
-      min-height: 48px;
-      padding: 0 24px;
-      font-weight: 600;
-      border-radius: 4px;
-      border: 1px solid transparent;
-      width: 360px;
-      transition: .3s;
-      &:hover {
-        opacity: 0.8;
-        box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
-      }
+    &--auction {
+      @include auctionBtn();
     }
     &--return {
       display: block;
@@ -243,4 +248,93 @@ hr {
 .sm {
   font-size: 12px;
   font-weight: lighter;
+}
+
+// 購入確認ページ
+
+.ItemContainer {
+  margin: 0 auto;
+  padding: 32px 16px;
+  max-width: 375px;
+  border-top: 2px solid #f8f8f8;
+  h2 {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 34px;
+  }
+  &__contents {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__imageField {
+    height: 80px;
+    width: 80px;
+    &--image {
+      height: 80px;
+      width: 80px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 0;
+    }
+    &--picture {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__itemInfo {
+    margin-left: 16px;
+    width: 100%;
+  }
+  &__itemName {
+    line-height: 1.4em;
+    margin-bottom: 8px;
+  }
+  &__itemPrice {
+    text-align: right;
+    &--label {
+      font-size: 12px;
+    }
+    &--price {
+      font-size: 15px;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+  }
+  &__totalPrice {
+    &--label {
+      @include textBold();
+      font-size: 18px;
+      line-height: 24px;
+      vertical-align: baseline;
+    }
+    &--price {
+      font-size: 24px;
+      vertical-align: baseline;
+      line-height: 24px;
+      font-weight: 600;
+    }
+  }
+  &__label {
+    @include textBold();
+  }
+  &__payInfo {
+    margin-top: 16px;
+    p {
+      line-height: 1.4em;
+    }
+    &--card {
+      margin-top: 8px;
+      max-height: 32px;
+      max-width: 48px;
+    }
+  }
+  &__btn {
+    text-align: center;
+    margin: 0 auto;
+    &--buy {
+      @include auctionBtn(100%);
+    }
+  }
 }
