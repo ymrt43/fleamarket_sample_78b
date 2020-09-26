@@ -1,0 +1,96 @@
+.CreditHeader 
+  .Logo
+    = image_tag 'logo.png', size:'220x65', class: 'Logo__icon'
+
+%nav.BreadCrumbs
+  %ul.Menu
+    %li.Menu__list
+      = link_to "/", class:"Menu__list--name" do
+        FURIMA
+    %i.Menu__icon
+      = icon("fas", "angle-right")
+    %li.Menu__list
+      = link_to "/users", class:"Menu__list--name" do
+        マイページ
+    %i.Menu__icon
+      = icon("fas", "angle-right")
+    %li.Menu__list
+      = link_to "#",class:'Menu__list--big' do
+        クレジットカード情報入力
+
+.CreditContainer
+  .Title
+    %p.Title__name
+      クレジットカード情報入力
+  .Contents
+    .NrForm
+      %label.NrForm__title
+        カード番号
+      %span.NrForm__required
+        必須
+      %input.NrForm__input{type:"text",name:"card_number",placeholder:"半角数字のみ"}
+      %ul.CardsIcon
+        %li.CardsIcon__list
+          = image_tag 'visa.svg',size:'44x22'
+        %li.CardsIcon__list
+          = image_tag 'mastercard.svg',size:'44x22'
+        %li.CardsIcon__list
+          = image_tag 'saison.svg', size:'44x22'
+        %li.CardsIcon__list
+          = image_tag 'jcb.svg',size:'44x22'
+        %li.CardsIcon__list
+          = image_tag 'american_express.svg', size:'44x22'
+        %li.CardsIcon__list
+          = image_tag 'dinersclub.svg',size:'44x22'
+        %li.CardsIcon__list
+          = image_tag 'discover.svg', size:'44x22'
+    .ExpireForm
+      %label.ExpireForm__title
+        有効期限
+      %span.ExpireForm__required
+        必須
+      .Input
+        %select.InputMenu{id:"exp_month", name:"exp_month",type:"text"}
+          %option.InputMenu__list{label:"01", value:"1"}
+          %option.InputMenu__list{label:"02", value:"2"}
+          %option.InputMenu__list{label:"03", value:"3"}
+          %option.InputMenu__list{label:"04", value:"4"}
+          %option.InputMenu__list{label:"05", value:"5"}
+          %option.InputMenu__list{label:"06", value:"6"}
+          %option.InputMenu__list{label:"07", value:"7"}
+          %option.InputMenu__list{label:"08", value:"8"}
+          %option.InputMenu__list{label:"09", value:"9"}
+          %option.InputMenu__list{label:"10", value:"10"}
+          %option.InputMenu__list{label:"11", value:"11"}
+          %option.InputMenu__list{label:"12", value:"12"}
+        %label.Input__date 月
+        %select.InputMenu{id:"exp_year", name:"exp_year",type:"text"}
+          %option.InputMenu__list{label:"20", value:"2020"}
+          %option.InputMenu__list{label:"21", value:"2021"}
+          %option.InputMenu__list{label:"22", value:"2022"}
+          %option.InputMenu__list{label:"23", value:"2023"}
+          %option.InputMenu__list{label:"24", value:"2024"}
+          %option.InputMenu__list{label:"25", value:"2025"}
+          %option.InputMenu__list{label:"26", value:"2026"}
+          %option.InputMenu__list{label:"27", value:"2027"}
+          %option.InputMenu__list{label:"28", value:"2028"}
+          %option.InputMenu__list{label:"29", value:"2029"}
+          %option.InputMenu__list{label:"30", value:"2030"}
+        %label.Input__date 年
+    .SecurityForm
+      %label.SecurityForm__title
+        セキュリティコード
+      %span.SecurityForm__required
+        必須
+      %input.SecurityForm__input{type:"text",placeholder:"カード背面４桁もしくは３桁の番号"}
+    .Token
+      .TokenInfo
+        %span.TokenInfo__icon ?
+        %p.TokenInfo__about カード裏面の番号とは？
+    .Btn
+      %button.Btn__title{type:"submit"}
+        追加する
+      = link_to "/users",class:"Btn__back" do
+        もどる
+= render partial: 'items/appBanner'
+= render partial: 'items/footer'

@@ -1,0 +1,43 @@
+.LeftContainer {
+  width: 280px;
+  height: 800px;
+  float: left;
+  margin-right: 50px;
+  padding-top: 30px;
+  margin-top: -150px;
+  .MyPage {
+    display: block;
+    &__title {
+      size: 15px;
+      font-weight: bold;
+      width: 280px;
+      height: 40px;
+      text-align: center;
+      color: #333333;
+    }
+    .MyPageMenu {
+      width: 280px;
+      height: 300px;
+      &__list {
+        display: flex;
+        border-bottom: 1px solid #333333;
+        &--info {
+          width: 270px;
+          font-size: 14px;
+          line-height: 50px;
+          height: 50px;
+          color: #4e5863;
+          padding-left: 10px;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+      &__icon {
+        width: 20px;
+        height: 50px;
+        line-height: 50px;
+        color: #333333;
+      }
+    }
+  }
+}

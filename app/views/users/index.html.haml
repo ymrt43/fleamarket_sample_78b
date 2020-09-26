@@ -1,15 +1,21 @@
-- if user_signed_in?
-  %p
-    ログインしています
-  =link_to "ログアウト", destroy_user_session_path, method: :delete
-- else
-  %p
-    ログインしていません
-    %li
-      =link_to "新規会員登録", new_user_registration_path, method: :get
-    %li
-      =link_to "ログイン", new_user_session_path, method: :get
+= render partial: 'items/header'
 
--# = render partial: 'items/appBanner'
+%nav.BreadCrumbs
+  %ul.Menu
+    %li.Menu__list
+      = link_to "/",class:"Menu__list--name" do
+        FURIMA
+    %i.Menu__icon
+      = icon("fas", "angle-right")
+    %li.Menu__list
+      = link_to "#",class:"Menu__list--big" do
+        マイページ
+
+.UsersMain
+  = render partial: 'users/rightTableInfo'
+  = render partial: 'users/rightTableBuy'
+  = render partial: 'users/leftTable'
+  
+= render partial: 'items/appBanner'
+= render partial: 'items/display'
 = render partial: 'items/footer'
--# = render partial: 'items/display'
