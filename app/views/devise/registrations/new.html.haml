@@ -1,0 +1,54 @@
+.AccountMain
+  = render partial: 'items/header'
+  .AccountPage
+    .AccountPage__form
+      %h2 会員情報入力 (1/2)
+      = render "devise/shared/error_messages"
+      = form_with url: profiles_path, id: 'new_user', local: true do |f|
+        = devise_error_messages!
+        .FormField
+          .FormField__label--normal
+            = f.label "ニックネーム"
+            %i 必須
+          .FormField__input--normal
+            = f.text_field :name, autofocus: true, placeholder: "例) フリマ太郎"
+        .FormField
+          .FormField__label--normal
+            = f.label "メールアドレス"
+            %i 必須
+          .FormField__input--normal
+            = f.email_field :email, placeholder: "PC・携帯どちらでも可"
+        .FormField
+          .FormField__label--normal
+            = f.label "パスワード"
+            %i 必須
+          .FormField__input--normal
+            = f.password_field :password, autocomplete: "off", placeholder: "7文字以上の英数字"
+        .FormField
+          .FormField__label--normal
+            = f.label "お名前"
+            %i 必須
+          .FormField__input--name
+            = f.text_field :familyname, autofocus: true, placeholder: "例) 吉田"
+            = f.text_field :firstname, autofocus: true, placeholder: "例) 宗子"
+          .FormField__label--normal
+            = f.label "お名前(カナ)"
+            %i 必須
+          .FormField__input--name
+            = f.text_field :familykana, autofocus: true, placeholder: "例) ヨシダ"
+            = f.text_field :firstkana, autofocus: true, placeholder: "例) ソウス"
+        .FormField
+          .FormField__label--normal
+            = f.label "生年月日"
+            %i 必須
+          .FormField__select--date
+            = f.select :birthyear, ["--"] | (1900..2020).to_a.reverse
+            年
+            = f.select :birthmonth, ["--"] | (1..12).to_a
+            月
+            = f.select :birthday, ["--"] | (1..31).to_a
+            日
+
+        .actions
+          = f.submit "次へ", class: 'Button UserButton'
+  = render partial: 'items/footer'
