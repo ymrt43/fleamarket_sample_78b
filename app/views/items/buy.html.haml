@@ -1,0 +1,71 @@
+.Auction
+  .AuctionField
+    .AuctionField__header
+      = link_to "/" do
+        = image_tag 'logo.png', width: '185', height: '49'
+    .AuctionField__body
+      %section.ItemContainer
+        %h2
+          購入内容の確認
+      %section.ItemContainer
+        .ItemContainer__contents
+          .ItemContainer__imageField
+            %figure.ItemContainer__imageField--image
+              = image_tag 'product1.jpg', alt: "美味しそうな肉", class: 'ItemContainer__imageField--picture'
+          .ItemContainer__itemInfo
+            %p.ItemContainer__itemName
+              美味しいhoge牛コース 食事券 hogeホテル 使用期限2020年末まで
+            %p.ItemContainer__itemPrice
+              %span.ItemContainer__itemPrice--label 送料込み（税込）
+              %span.ItemContainer__itemPrice--price ¥12,000
+      %section.ItemContainer
+        .ItemContainer__contents
+          %span.ItemContainer__totalPrice--label 支払い金額
+          %span.ItemContainer__totalPrice--price ¥12,000
+      %section.ItemContainer
+        .ItemContainer__contentsTag
+          .ItemContainer__contents
+            %h3.ItemContainer__label
+              支払い方法
+            = link_to '###', class: 'Link__blue' do
+              変更する >
+          .ItemContainer__payInfo
+            %p クレジットカード
+            %p *************4242
+            %p
+              %span 有効期限&nbsp;
+              %span 01/25
+            = image_tag 'visa.svg', alt: 'visa', height: '22', width: '44', class: 'ItemContainer__payInfo--card'
+      %section.ItemContainer
+        .ItemContainer__contentsTag
+          .ItemContainer__contents
+            %h3.ItemContainer__label
+              配送先
+            = link_to '###', class: 'Link__blue' do
+              変更する >
+          .ItemContainer__payInfo
+            %p 〒444-4444
+            %p hoge府hoge市hogehoge4-44-44 hogehogehoge404
+            %p hoge本hoge子
+      %section.ItemContainer
+        .ItemContainer__btn
+          .FormBlock__btn
+            =link_to '###', class: 'BuyItem' do
+              %button.ItemContainer__btn--buy
+                購入する
+          = link_to 'もどる', :back, class: "FormBlock__btn--return"
+    .AuctionField__footer
+      .Policies
+        %ul.Policies__list
+          %li.Policy
+            = link_to "#", class: "Policy__list" do
+              プライバシーポリシー
+          %li.Policy
+            = link_to "#", class: "Policy__list" do
+              FURIMA利用規約
+          %li.Policy
+            = link_to "#", class: "Policy__list" do
+              特定商取引に関する表記
+      = link_to "/" do
+        = image_tag 'logo-white.png', width: '120', height: '34.93', class: 'Logo__auction'
+      %p.sm © FURIMA
