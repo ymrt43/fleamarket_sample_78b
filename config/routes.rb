@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :users, only: [:index, :edit] 
   resources :cards, only: [:new, :show, :destroy] 
-  resources :items, only: [:index, :new]
+  resources :items, only: [:index, :new, :show]
   get 'items_buy', to: 'items#buy'
   resources :profiles, only: [:index, :new, :post, :create]
+
 end

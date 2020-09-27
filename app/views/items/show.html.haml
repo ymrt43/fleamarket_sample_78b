@@ -1,0 +1,91 @@
+= render partial: 'items/header'
+
+%nav.BreadCrumbs
+  %ul.Menu
+    %li.Menu__list
+      = link_to "/",class:"Menu__list--name" do
+        FURIMA
+    %i.Menu__icon
+      = icon("fas", "angle-right")
+    %li.Menu__list
+      = link_to "/users",class:"Menu__list--name" do
+        マイページ
+    %i.Menu__icon
+      = icon("fas", "angle-right")
+    %li.Menu__list
+      = link_to "#",class:"Menu__list--big" do
+        商品詳細
+
+.ItemMain
+  .ItemContainer
+    .ItemContent
+      .ItemBox
+        .ItemBox__title
+          Title
+        .ItemBoxBody
+          %ul.ItemMenu
+            %li.ItemMenu__list
+              = image_tag 'product2.jpg', size:'560x346', class: 'ItemMenu__list--big'
+              %ul.ItemMenuSmall
+                %li.ItemMenuSmall__list
+                  = image_tag 'product2.jpg', size:'140x87', class: 'ItemMenuSmall__list--small'
+                %li.ItemMenuSmall__list
+                  = image_tag 'product2.jpg', size:'140x87', class: 'ItemMenuSmall__list--small'
+        .ItemPrice
+          %span.ItemPrice__detail ¥1000
+        .ItemTax
+          %span.ItemTax__detail (税込) 送料込み
+        .ItemTitle 
+          Title
+        .ItemTable
+          %table.TableForm
+            %tbody.TableBody
+              %tr.TableDetail
+                %th.TableDetail__title 出品者
+                %td.TableDetail__inner  
+              %tr.TableDetail
+                %th.TableDetail__title カテゴリー
+                %td.TableDetail__inner カテゴリー
+              %tr.TableDetail
+                %th.TableDetail__title ブランド
+                %td.TableDetail__inner
+              %tr.TableDetail
+                %th.TableDetail__title 商品のサイズ
+                %td.TableDetail__inner 新品/未使用
+              %tr.TableDetail
+                %th.TableDetail__title 商品の状態
+                %td.TableDetail__inner
+              %tr.TableDetail
+                %th.TableDetail__title 配送料の負担
+                %td.TableDetail__inner 送料込み（出品者負担）
+              %tr.TableDetail
+                %th.TableDetail__title 発送元の地域
+                %td.TableDetail__inner 北海道
+              %tr.TableDetail
+                %th.TableDetail__title 発送日の目安
+                %td.TableDetail__inner 1-2日で発送
+        .ItemOption
+          .ItemOption__like
+            = link_to "#", class:"ItemOption__like--btn" do
+              = icon("fas", "star", class:"ItemOption__like--btn")
+              お気に入り
+          .ItemOption__note
+            = link_to "#", class:"ItemOption__note--flag" do
+              = icon("fas", "flag", class:"ItemOption__note--flag" )
+              不適切な商品の通報
+              
+      .ItemComment
+        = form_with( local: true, id: "new_comment" ) do |f|
+          .CommentBox
+            = f.text_area :comment, class: "CommentBox__inner", placeholder: "コメントする"
+          .CommentBox__note
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          .CommentBox__Btn
+            = button_tag type: 'submit', class: "CommentBox__Btn--btn" do
+              = icon('fas', 'comment')
+              コメントする
+
+= render partial: 'items/appBanner'
+= render partial: 'items/footer'
