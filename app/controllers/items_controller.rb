@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   def index
     @parents = Category.where(ancestry: nil)
     @items = Item.all
+    @images = Image.all
   end
 
   def new
