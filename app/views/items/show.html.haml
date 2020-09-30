@@ -21,10 +21,11 @@
     .ItemContent
       .ItemBox
         .ItemBox__title
-          Title
+          = @items.name
         .ItemBoxBody
           %ul.ItemMenu
             %li.ItemMenu__list
+              -# - @items.item_imgs.first(1).each do |img|
               = image_tag 'product2.jpg', size:'560x346', class: 'ItemMenu__list--big'
               %ul.ItemMenuSmall
                 %li.ItemMenuSmall__list
