@@ -4,4 +4,6 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to :buyer, class_name: "User"
+
+  validates :name, :description, :state, :fee, :area, :term, :price, :user_id, category_id, presence: true
 end
