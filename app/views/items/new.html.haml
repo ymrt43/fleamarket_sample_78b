@@ -44,7 +44,7 @@
             .FormBlock__content--info
               = f.label :category_id, "カテゴリー", class: "FormBlock__content--title"
               %span.req 必須
-            = f.select :category_id, {}, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
+            = f.collection_select :category_id, @categories, :id, :name, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
           .FormBlock__content
             .FormBlock__content--info
               = f.label :brand, "ブランド", class: "FormBlock__content--title"
