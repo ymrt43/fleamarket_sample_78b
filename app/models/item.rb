@@ -6,5 +6,5 @@ class Item < ApplicationRecord
   belongs_to :buyer, class_name: "User"
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  validates :name, :description, :state, :fee, :area, :term, :price, :user_id, category_id, presence: true
+  validates :name, :description, :state, :fee, :area, :term, :price, :user_id, :category_id, presence: true
 end
