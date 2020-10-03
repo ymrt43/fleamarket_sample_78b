@@ -54,7 +54,7 @@
             .FormBlock__content--info
               = f.label :state, "商品の状態", class: "FormBlock__content--title"
               %span.req 必須
-            = f.select :state, {}, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
+            = f.select :state, Item.states.keys, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
         %hr/
         .FormBlock
           .FormBlock__group
@@ -66,17 +66,17 @@
             .FormBlock__content--info
               = f.label :fee, "配送料の負担", class: "FormBlock__content--title"
               %span.req 必須
-            = f.select :fee, {}, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
+            = f.select :fee, Item.fees.keys, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
           .FormBlock__content
             .FormBlock__content--info
               = f.label :area, "発送元の地域", class: "FormBlock__content--title"
               %span.req 必須
-            = f.select :area, {}, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
+            = f.select :area, Item.areas.keys, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
           .FormBlock__content
             .FormBlock__content--info
               = f.label :term, "発送までの日数", class: "FormBlock__content--title"
               %span.req 必須
-            = f.select :term, {}, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
+            = f.select :term, Item.terms.keys, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
         %hr/
         .FormBlock
           .FormBlock__group
