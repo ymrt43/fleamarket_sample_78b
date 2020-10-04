@@ -3,7 +3,7 @@
   .AccountPage
     .AccountPage__form
       %h2 会員情報入力 (2/2)
-      = form_with model: @user, url: user_registration_path, id: 'new_user', local: true do |f|
+      = form_with model: @user, scope: 'user', url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
         -# = form_with model: @address, url: new_profile_path, id: 'new_user', local: true do |f|
         -# = devise_error_messages!
         .FormField
@@ -47,6 +47,17 @@
             -# %i 必須
           .FormField__input--normal
             = f.text_field :dial_number, autofocus: true, placeholder: "例) 09012345678"
+
+            = f.hidden_field :name, value: @user_params[:name]
+            = f.hidden_field :email, value: @user_params[:email]
+            = f.hidden_field :password, value: @user_params[:password]
+            = f.hidden_field :familyname, value: @user_params[:familyname]
+            = f.hidden_field :firstname, value: @user_params[:firstname]
+            = f.hidden_field :familykana, value: @user_params[:familykana]
+            = f.hidden_field :firstkana, value: @user_params[:firstkana]
+            = f.hidden_field :birthyear, value: @user_params[:birthyear]
+            = f.hidden_field :birthmonth, value: @user_params[:birthmonth]
+            = f.hidden_field :birthday, value: @user_params[:birthday]
 
         .actions
           = f.submit "登録", class: 'Button UserButton'

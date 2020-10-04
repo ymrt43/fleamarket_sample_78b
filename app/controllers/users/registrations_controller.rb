@@ -11,9 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @parents = Category.where(ancestry: nil)
+    super
+  end
 
   # GET /resource/edit
   # def edit
