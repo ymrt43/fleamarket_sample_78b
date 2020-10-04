@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  # before_action :move_to_index, except: [:index, :show]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @categories = Category.all
+    @prefectures = Prefecture.all
   end
   
   def create
@@ -33,9 +34,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :desctioption, :brand, :state, :fee, :area, :term, :price, :category_id, images_attributes: [:src]).merge(user_id: current_user.id)
   end
 
-  def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
-  end
+  # def move_to_index
+  #   unless user_signed_in?
+  #     redirect_to action: :index
+  #   end
+  # end
 end
