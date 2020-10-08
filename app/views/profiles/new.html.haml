@@ -40,7 +40,7 @@
             = f.label "建物名"
             -# %i 必須
           .FormField__input--normal
-            = f.text_field :building_name, autocomplete: "off", placeholder: "例) スカイビル123号室"
+            = f.text_field :building_number, autocomplete: "off", placeholder: "例) スカイビル123号室"
         .FormField
           .FormField__label--normal
             = f.label "電話番号"
@@ -58,6 +58,8 @@
             = f.hidden_field :birthyear, value: @user_params[:birthyear]
             = f.hidden_field :birthmonth, value: @user_params[:birthmonth]
             = f.hidden_field :birthday, value: @user_params[:birthday]
+            - birthdate = Date.new(@user_params[:birthyear].to_i, @user_params[:birthmonth].to_i, @user_params[:birthday].to_i)
+            = f.hidden_field :birthdate, value: birthdate
 
         .actions
           = f.submit "登録", class: 'Button UserButton'

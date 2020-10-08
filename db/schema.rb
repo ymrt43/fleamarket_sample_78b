@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_073618) do
     t.string "city", null: false
     t.string "house_number", null: false
     t.string "building_number", null: false
-    t.integer "dial_number", null: false
+    t.string "dial_number", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_073618) do
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "familyname", null: false
-    t.string "firlstname", null: false
+    t.string "firstname", null: false
     t.string "familykana", null: false
     t.string "firstkana", null: false
     t.date "birthdate", null: false
