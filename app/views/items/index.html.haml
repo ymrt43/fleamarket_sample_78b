@@ -102,7 +102,10 @@
           .ProductList
             = link_to item_path(id: item.id) do
               %figure.ProductList__img
-                = image_tag "product2.jpg", class: 'category'
+                = image_tag item.images[0].src.url, class: 'category'
+                .ProductList__ItemsSold
+                  .ProductList__ItemsSold--inner 
+                    Sold
               .ProductList__body
                 %h3.name
                   = item.name

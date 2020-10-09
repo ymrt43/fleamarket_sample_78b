@@ -25,28 +25,36 @@
         .ItemBoxBody
           %ul.ItemMenu
             %li.ItemMenu__list
-              -# - @items.item_imgs.first(1).each do |img|
-              = image_tag 'product2.jpg', size:'560x346', class: 'ItemMenu__list--big'
+              = image_tag @items.images[0].src.url, size:'560x346', class: "ItemMenu__list--big"
               %ul.ItemMenuSmall
                 %li.ItemMenuSmall__list
-                  = image_tag 'product2.jpg', size:'140x87', class: 'ItemMenuSmall__list--small'
+                  = image_tag @items.images[0].src.url, size:'140x87', class: 'ItemMenuSmall__list--small'
                 %li.ItemMenuSmall__list
-                  = image_tag 'product2.jpg', size:'140x87', class: 'ItemMenuSmall__list--small'
+                  = image_tag @items.images[0].src.url, size:'140x87', class: 'ItemMenuSmall__list--small'
         .ItemPrice
-          %span.ItemPrice__detail ¥1000
+          %span.ItemPrice__detail 
+            = "¥#{@items.fee}"
         .ItemTax
           %span.ItemTax__detail (税込) 送料込み
         .ItemTitle 
-          Title
+          = @items.name
         .ItemTable
           %table.TableForm
             %tbody.TableBody
               %tr.TableDetail
                 %th.TableDetail__title 出品者
                 %td.TableDetail__inner  
+                = @seller
               %tr.TableDetail
                 %th.TableDetail__title カテゴリー
-                %td.TableDetail__inner カテゴリー
+                %td.TableDetail__inner 
+                  = @parents.name
+                -# %br
+                -# >
+                -# = @child.name
+                -# %br
+                -# >>
+                -# = @grandchild.name
               %tr.TableDetail
                 %th.TableDetail__title ブランド
                 %td.TableDetail__inner
@@ -56,6 +64,7 @@
               %tr.TableDetail
                 %th.TableDetail__title 商品の状態
                 %td.TableDetail__inner
+                  = @items.description
               %tr.TableDetail
                 %th.TableDetail__title 配送料の負担
                 %td.TableDetail__inner 送料込み（出品者負担）
@@ -70,6 +79,12 @@
             = link_to "#", class:"ItemOption__like--btn" do
               = icon("fas", "star", class:"ItemOption__like--btn")
               お気に入り
+          .ItemOption__SellerArea
+            -# - if user_signed_in? && current_user.id == @items.seller_id
+            = link_to edit_item_path(@items), class:"ItemOption__SellerArea--edit" do
+              編集
+            = link_to item_path(@items), method: :delete, class:"ItemOption__SellerArea--delete" do
+              削除
           .ItemOption__note
             = link_to "#", class:"ItemOption__note--flag" do
               = icon("fas", "flag", class:"ItemOption__note--flag" )
