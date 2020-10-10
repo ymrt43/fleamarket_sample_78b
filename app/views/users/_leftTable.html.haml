@@ -37,7 +37,7 @@
           %i.MyPageMenu__icon
             = icon("fas", "angle-right")
         %li.MyPageMenu__list
-          =link_to "/users/:id/edit",class:"MyPageMenu__list--info" do
+          = link_to destroy_user_session_path ,class:"MyPageMenu__list--info" do
             ログアウト
           %i.MyPageMenu__icon
             = icon("fas", "angle-right")

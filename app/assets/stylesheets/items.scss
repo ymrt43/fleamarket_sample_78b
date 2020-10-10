@@ -245,7 +245,7 @@
       }
       .ProductLists {
         width: 780px;
-        margin: 26px auto;
+        margin: 26px auto 0 auto;
         display: flex;
         justify-content: space-around;
         .ProductList {
@@ -274,6 +274,24 @@
             z-index: auto;
             height: 150px;
             object-fit: cover;
+          }
+          &__ItemsSold {
+            border-width: 100px 100px 0 0;
+            border-color: #ea352d transparent;
+            display: block;
+            position: absolute;
+            z-index: 1;
+            border-style: solid;
+            &--inner {
+              top: -80px;
+              font-size: 20px;
+              position: absolute;
+              z-index: 2;
+              color: #ffffff;
+              transform: rotate(-45deg);
+              letter-spacing: 2px;
+              font-weight: 600;
+            }
           }
           &__body {
             background-color: white;
