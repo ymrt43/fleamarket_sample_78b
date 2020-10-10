@@ -1,10 +1,10 @@
 // 全体３分割
-.Auction {
+.Market {
   width: 100%;
   background-color: #f8f8f8;
 }
 
-.AuctionField{
+.MarketField{
   display: flex;
   flex-direction: column;
   &__header{
@@ -73,7 +73,7 @@ hr {
 }
 
 // オークション実行ボタン
-@mixin auctionBtn($wid: 360px) {
+@mixin marketBtn($wid: 360px) {
   width: $wid;
   background-color: #3CCACE;
   color: #ffffff;
@@ -163,8 +163,8 @@ hr {
   &__btn {
     margin: 0px auto 32px;
     text-align: center;
-    &--auction {
-      @include auctionBtn();
+    &--market {
+      @include marketBtn();
     }
     &--return {
       display: block;
@@ -240,7 +240,7 @@ hr {
   }
 }
 
-.Logo__auction {
+.Logo__market {
   filter: invert(50%) sepia(0%) saturate(11%) hue-rotate(143deg) brightness(101%) contrast(93%);
   vertical-align: bottom;
 }
@@ -334,7 +334,7 @@ hr {
     text-align: center;
     margin: 0 auto;
     &--buy {
-      @include auctionBtn(100%);
+      @include marketBtn(100%);
     }
   }
 }
