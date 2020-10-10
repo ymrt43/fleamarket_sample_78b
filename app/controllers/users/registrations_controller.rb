@@ -14,10 +14,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @parents = Category.where(ancestry: nil)
     super
-    # if @user.save
-    # else
-      # @user.destroy
-    # end
   end
 
   # GET /resource/edit

@@ -21,8 +21,16 @@
           .FormField__label--normal
             = f.label "パスワード"
             %i 必須
+            - if flash[:alert]
+              パスワードが違います！
           .FormField__input--normal
             = f.password_field :password, autocomplete: "off", placeholder: "7文字以上の英数字"
+        .FormField
+          .FormField__label--normal
+            = f.label "パスワード(確認)"
+            %i 必須
+          .FormField__input--normal
+            = f.password_field :password_confirmation, autocomplete: "off", placeholder: "上記パスワードと同じ文字列"
         .FormField
           .FormField__label--normal
             = f.label "お名前"

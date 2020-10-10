@@ -14,32 +14,28 @@ class ApplicationController < ActionController::Base
     Rails.env.production?
   end
 
-    # 新規登録後のリダイレクト先
-    def after_sign_in_path_for(resource)
+  # 新規登録後のリダイレクト先
+  def after_sign_in_path_for(resource)
     @profile = @user.build_profile
     @address = @user.build_address
     @profile.assign_attributes(profile_params)
     @address.assign_attributes(address_params)
-    # if @user.save
-    # else
-      # @user.destroy
-    # end
-      if current_user.valid?
-        current_user.save
-        # 成功
-        root_path  #　指定したいパスに変更
-      else
-        current_user.destroy
-        # 失敗
-        new_user_registration_path  #　指定したいパスに変更
-      end
+    if current_user.valid?
+      current_user.save
+      # 成功
+      root_path  #　指定したいパスに変更
+    else
+      current_user.destroy
+      # 失敗
+      new_user_registration_path  #　指定したいパスに変更
     end
+  end
 
 
   protected
 
   def configure_permitted_parameters
-    added_attrs = [:name, :email, :password, :password_confirmation, :remember_me]
+    added_attrs = [:name, :email, :password, :password_confirmation,]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
