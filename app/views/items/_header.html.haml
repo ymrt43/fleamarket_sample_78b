@@ -19,14 +19,14 @@
           = link_to "#", class:"brand" do
             ブランド
       %ul.ListRight
-        - if user_signed_in?
-          = link_to users_path, class:"login" do
-            マイページ
-          -# = button_to 'ログアウト', destroy_user_session_path, {method: :delete}
-        - else
-          %li.ListRight__item1
-            = link_to user_session_path, class:"login" do
-              ログイン
-          %li.ListRight__item2
-            = link_to new_user_registration_path, class:"new" do
-              新規会員登録
+        - if !request.path_info.eql?(new_profile_path) && !request.path_info.eql?(new_user_registration_path)
+          - if user_signed_in?
+            = link_to users_path, class:"login" do
+              マイページ
+          - else
+            %li.ListRight__item1
+              = link_to new_user_session_path, class:"login" do
+                ログイン
+            %li.ListRight__item2
+              = link_to new_user_registration_path, class:"new" do
+                新規会員登録
