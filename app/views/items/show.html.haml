@@ -33,7 +33,7 @@
                   = image_tag @items.images[0].src.url, size:'140x87', class: 'ItemMenuSmall__list--small'
         .ItemPrice
           %span.ItemPrice__detail 
-            = "¥#{@items.fee}"
+            = "¥#{@items.price}"
         .ItemTax
           %span.ItemTax__detail (税込) 送料込み
         .ItemTitle 
@@ -44,47 +44,50 @@
               %tr.TableDetail
                 %th.TableDetail__title 出品者
                 %td.TableDetail__inner  
-                = @seller
+                  = @items.user.name
               %tr.TableDetail
                 %th.TableDetail__title カテゴリー
                 %td.TableDetail__inner 
-                  = @parents.name
-                -# %br
-                -# >
-                -# = @child.name
-                -# %br
-                -# >>
-                -# = @grandchild.name
+                  = @items.category.parent.parent.name
+                  %br
+                  = @items.category.parent.name
+                  %br
+                  = @items.category.name
               %tr.TableDetail
                 %th.TableDetail__title ブランド
                 %td.TableDetail__inner
+                  = @items.brand
               %tr.TableDetail
-                %th.TableDetail__title 商品のサイズ
-                %td.TableDetail__inner 新品/未使用
+                %th.TableDetail__title 商品の説明
+                %td.TableDetail__inner 
+                  =  @items.description
               %tr.TableDetail
                 %th.TableDetail__title 商品の状態
                 %td.TableDetail__inner
-                  = @items.description
+                  = @items.state
               %tr.TableDetail
                 %th.TableDetail__title 配送料の負担
-                %td.TableDetail__inner 送料込み（出品者負担）
+                %td.TableDetail__inner 
+                  = @items.fee
               %tr.TableDetail
                 %th.TableDetail__title 発送元の地域
-                %td.TableDetail__inner 北海道
+                %td.TableDetail__inner
+                  = @items.prefecture.name
               %tr.TableDetail
                 %th.TableDetail__title 発送日の目安
-                %td.TableDetail__inner 1-2日で発送
+                %td.TableDetail__inner 
+                  = @items.term
         .ItemOption
           .ItemOption__like
             = link_to "#", class:"ItemOption__like--btn" do
               = icon("fas", "star", class:"ItemOption__like--btn")
               お気に入り
           .ItemOption__SellerArea
-            -# - if user_signed_in? && current_user.id == @items.seller_id
-            = link_to edit_item_path(@items), class:"ItemOption__SellerArea--edit" do
-              編集
-            = link_to item_path(@items), method: :delete, class:"ItemOption__SellerArea--delete" do
-              削除
+            - if user_signed_in? && current_user.id == @items.user_id
+              = link_to edit_item_path(@items), class:"ItemOption__SellerArea--edit" do
+                編集
+              = link_to item_path(@items), method: :delete, class:"ItemOption__SellerArea--delete" do
+                削除
           .ItemOption__note
             = link_to "#", class:"ItemOption__note--flag" do
               = icon("fas", "flag", class:"ItemOption__note--flag" )

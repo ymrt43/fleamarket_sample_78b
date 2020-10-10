@@ -15,6 +15,8 @@ class ItemsController < ApplicationController
   end
   
   def create
+    @categories = Category.all
+    @prefectures = Prefecture.all
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -46,7 +48,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :brand, :state, :fee, :area, :term, :price, :category_id, images_attributes: [:src]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :brand, :state, :fee, :prefecture_id, :term, :price, :category_id, images_attributes: [:src]).merge(user_id: current_user.id)
   end
 
   def move_to_index

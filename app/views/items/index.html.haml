@@ -103,16 +103,17 @@
             = link_to item_path(id: item.id) do
               %figure.ProductList__img
                 = image_tag item.images[0].src.url, class: 'category'
-                .ProductList__ItemsSold
-                  .ProductList__ItemsSold--inner 
-                    Sold
+                - if item.buyer_id.present?
+                  .ProductList__ItemsSold
+                    .ProductList__ItemsSold--inner 
+                      Sold
               .ProductList__body
                 %h3.name
                   = item.name
                 .details
                   %ul
                     %li 
-                      = "#{item.fee}円"
+                      = "#{item.price}円"
                     %li
                       %i.fa.fa-star
                         0
