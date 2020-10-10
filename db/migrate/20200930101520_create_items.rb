@@ -6,7 +6,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :brand
       t.integer :state, null: false
       t.integer :fee, null: false
-      t.integer :area, null: false
       t.integer :term, null: false
       t.integer :price, null: false
       t.integer :buyer_id
