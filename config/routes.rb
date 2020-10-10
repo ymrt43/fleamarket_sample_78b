@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'items#index'
-  resources :users, only: [:index, :edit] 
-  resources :cards, only: [:new, :show, :destroy] 
+  resources :users, only: [:index, :edit]
+  resources :cards, only: [:new, :show, :destroy]
   resources :items
   get 'items_buy', to: 'items#buy'
   resources :profiles, only: [:index, :new, :post, :create]
