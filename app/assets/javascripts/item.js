@@ -21,7 +21,7 @@ $(function(){
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
   });
 
-  $('.FormBlock__iSelectsField').on('click', '.FormBlock__iSelection--remove', function(e) {
+  $('.FormBlock__iSelectsField').on('click', '.FormBlock__iSelection--remove', function() {
     $(this).parent().remove();
     if ($('.FormBlock__iSelectsField').length == 0) $('.FormBlock__iSelectsField').append(buildFileField(fileIndex[0]));
   });
