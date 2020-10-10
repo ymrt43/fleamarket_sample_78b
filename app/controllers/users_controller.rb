@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   def edit
+    @parents = Category.where(ancestry: nil)
   end
   def update
+    @parents = Category.where(ancestry: nil)
   end
 
   def index
