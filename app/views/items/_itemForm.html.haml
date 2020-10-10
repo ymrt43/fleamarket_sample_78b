@@ -1,0 +1,121 @@
+.MarketField__body
+  = form_with model: @item, local: true do |f|
+    .FormBlock
+      .FormBlock__content
+        .FormBlock__content--info
+          %label.FormBlock__content--title 出品画像
+          %span.req 必須
+        %p.FormBlock__content--info2 最大10枚までアップロードできます
+        .FormBlock__images
+          .FormBlock__iSelectsField
+            = f.fields_for :images do |i|
+              = i.label :src do
+                .FormBlock__iSelection{data: {index: i.index}}
+                  = i.file_field :src, required: true, class: 'FormBlock__iSelection--file'
+                  = icon('fas', 'camera', class: "FormBlock__iSelection--icon")
+                  %p.FormBlock__iSelection--hwToUp
+                    ドラッグアンドドロップ
+                    %br/
+                    またはクリックしてファイルをアップロード
+                  %span.FormBlock__iSelection--remove 削除
+    %hr/
+    .FormBlock
+      .FormBlock__content
+        .FormBlock__content--info
+          = f.label :name, "商品名", class: "FormBlock__content--title"
+          %span.req 必須
+        = f.text_field :name, maxlength: 40, placeholder: "40文字まで", required: true, class: "FormBox__field"
+      .FormBlock__content
+        .FormBlock__content--info
+          = f.label :description, "商品の説明", class: "FormBlock__content--title"
+          %span.req 必須
+        = f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", required: true, class: "FormBox__area"
+        %p.FormBox__area--textCounter
+          0/1000
+    %hr/
+    .FormBlock
+      .FormBlock__group
+        商品の詳細
+      .FormBlock__content
+        .FormBlock__content--info
+          = f.label :category_id, "カテゴリー", class: "FormBlock__content--title"
+          %span.req 必須
+        = f.collection_select :category_id, @categories, :id, :name, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
+      .FormBlock__content
+        .FormBlock__content--info
+          = f.label :brand, "ブランド", class: "FormBlock__content--title"
+          %span.opt 任意
+        = f.text_field :brand, placeholder: "例）シャネル", class: "FormBox__field"
+      .FormBlock__content
+        .FormBlock__content--info
+          = f.label :state, "商品の状態", class: "FormBlock__content--title"
+          %span.req 必須
+        = f.select :state, Item.states.keys, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
+    %hr/
+    .FormBlock
+      .FormBlock__group
+        配送について
+        %span
+          =link_to "###", class: "Link__blue" do
+            = icon('far', 'question-circle')
+      .FormBlock__content
+        .FormBlock__content--info
+          = f.label :fee, "配送料の負担", class: "FormBlock__content--title"
+          %span.req 必須
+        = f.select :fee, Item.fees.keys, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
+      .FormBlock__content
+        .FormBlock__content--info
+          = f.label :prefecture_id, "発送元の地域", class: "FormBlock__content--title"
+          %span.req 必須
+        = f.collection_select :prefecture_id, @prefectures, :id, :name, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
+      .FormBlock__content
+        .FormBlock__content--info
+          = f.label :term, "発送までの日数", class: "FormBlock__content--title"
+          %span.req 必須
+        = f.select :term, Item.terms.keys, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
+    %hr/
+    .FormBlock
+      .FormBlock__group
+        価格 (¥300〜9,999,999)
+        %span
+          =link_to "###", class: "Link__blue" do
+            = icon('far', 'question-circle')
+      .FormBlock__content
+        .FormBlock__price
+          .FormBlock__content--info
+            = f.label :price, "販売価格", class: "FormBlock__content--title"
+            %span.req 必須
+          .FormBlock__price
+            %span.FormBlock__price--yen ¥
+            = f.number_field :price, placeholder: "0", required: true, class: "FormBox__short"
+      .FormBlock__calc
+        .FormBlock__calc--left
+          販売手数料（10%）
+        .FormBlock__calc--right
+          ー
+      %hr.short/
+      .FormBlock__calc
+        .FormBlock__calc--left
+          販売利益
+        .FormBlock__calc--right
+          ー
+    .FormBlock__btn
+      = f.submit "出品する", class: "FormBlock__btn--market"
+      = link_to 'もどる', :back, class: "FormBlock__btn--return"
+  .FormBlock__rules
+    禁止されている
+    %span
+      =link_to '行為', '###', class: "Link__blue"
+    および
+    %span
+      =link_to '出品物', '###', class: "Link__blue"
+    を必ずご確認ください。
+    %span
+      =link_to '偽ブランド品', '###', class: "Link__blue"
+    や
+    %span
+      =link_to '盗品物', '###', class: "Link__blue"
+    などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
+    %span
+      =link_to '加盟店規約', '###', class: "Link__blue"
+    に同意したことになります。
