@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  validates :name, :description, :state, :fee, :prefecture, :term, :price, presence: true
+  validates :name, :description, :state, :fee, :term, :price, presence: true
 
   enum state: {
     "新品、未使用": 1, "未使用に近い": 2, "目立った傷や汚れなし": 3,
