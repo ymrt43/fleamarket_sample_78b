@@ -15,7 +15,7 @@
               .FormBlock__iSelectsField
                 = f.fields_for :images do |i|
                   = i.label :src do
-                    .FormBlock__iSelection
+                    .FormBlock__iSelection{data: {index: i.index}}
                       = i.file_field :src, required: true, class: 'FormBlock__iSelection--file'
                       = icon('fas', 'camera', class: "FormBlock__iSelection--icon")
                       %p.FormBlock__iSelection--hwToUp
