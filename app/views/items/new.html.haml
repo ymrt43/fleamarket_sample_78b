@@ -69,7 +69,7 @@
             = f.select :fee, Item.fees.keys, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
           .FormBlock__content
             .FormBlock__content--info
-              = f.label :area, "発送元の地域", class: "FormBlock__content--title"
+              = f.label :prefecture_id, "発送元の地域", class: "FormBlock__content--title"
               %span.req 必須
             = f.collection_select :prefecture_id, @prefectures, :id, :name, { include_blank: "選択してください" }, { class: "FormBox__select", required: true }
           .FormBlock__content
