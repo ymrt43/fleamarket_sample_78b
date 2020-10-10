@@ -7,4 +7,9 @@ $(function(){
     fileIndex.shift();
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
   });
+
+  $('.FormBlock__iSelectsField').on('click', '.FormBlock__iSelection--remove', funciton(e) {
+    $(this).parent().remove();
+    if ($('.FormBlock__iSelectsField').length == 0) $('.FormBlock__iSelectsField').append(buildFileField(fileIndex[0]));
+  });
 });
