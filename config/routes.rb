@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     get "/sign_up" => "users/registrations#new", as: :new_user_registration
     post "/sign_up" => "users/registrations#create", as: :user_registration
     get "/sign_in" => "users/sessions#new", as: :user_session
-   end
+  end
   devise_for :users
 
   root 'items#index'
