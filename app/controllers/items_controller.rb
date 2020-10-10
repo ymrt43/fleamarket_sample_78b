@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
+  before_action :set_item, only: [:show, :destroy]
 
   def index
     @parents = Category.where(ancestry: nil)
     @items = Item.all
-    @images = Image.all
   end
 
   def new
@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.find(params[:id])
     @parents = Category.where(ancestry: nil)
   end
 
@@ -34,15 +33,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # @grandchild = Category.find(@items.category_id)
-    # @child = @grandchild.parent
-    # @parent = @child.parent
   end
 
   def destroy
-    @items = Item.find(params[:id])
-    @items.destroy
-    redirect_to root_path
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :new
+    end
   end
   
   private
@@ -55,5 +53,9 @@ class ItemsController < ApplicationController
     unless user_signed_in?
       redirect_to action: :index
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
