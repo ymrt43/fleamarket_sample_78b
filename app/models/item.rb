@@ -3,9 +3,6 @@ class Item < ApplicationRecord
   has_many :comments
   belongs_to :user
   belongs_to :category
-<<<<<<< HEAD
-  belongs_to :buyer, class_name: "User"
-=======
   belongs_to :buyer, class_name: "User", optional: true
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
@@ -22,5 +19,4 @@ class Item < ApplicationRecord
 
   enum term: { "1~2日で発送": 1, "2~3日で発送": 2, "4~7日で発送": 3 }
 
->>>>>>> origin
 end

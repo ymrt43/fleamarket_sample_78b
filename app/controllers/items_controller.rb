@@ -31,7 +31,6 @@ class ItemsController < ApplicationController
   def buy
   end
 
-<<<<<<< HEAD
   def edit
     # @grandchild = Category.find(@items.category_id)
     # @child = @grandchild.parent
@@ -44,7 +43,6 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
   
-=======
   private
 
   def item_params
@@ -56,5 +54,4 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
   end
->>>>>>> origin
 end
