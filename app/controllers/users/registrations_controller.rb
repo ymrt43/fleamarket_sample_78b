@@ -14,11 +14,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @parents = Category.where(ancestry: nil)
     super
-    @profile = @user.build_profile
-    @address = @user.build_address
-    @profile.assign_attributes(profile_params)
-    @address.assign_attributes(address_params)
-    @user.save
+    # if @user.save
+    # else
+      # @user.destroy
+    # end
   end
 
   # GET /resource/edit
@@ -67,12 +66,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  private
-  def profile_params
-    params.require(:user).permit(:familyname, :firstname, :familykana, :firstkana, :birthdate)
-  end
-
-  def address_params
-    params.require(:user).permit(:postalcode, :prefecture, :city, :house_number, :building_number, :dial_number)
-  end
 end
