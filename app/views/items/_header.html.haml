@@ -21,8 +21,9 @@
       %ul.ListRight
         - if !request.path_info.eql?(new_profile_path) && !request.path_info.eql?(new_user_registration_path)
           - if user_signed_in?
-            = link_to users_path, class:"login" do
-              マイページ
+            %li.ListRight__item
+              = link_to users_path, class:"my-page" do
+                マイページ
           - else
             %li.ListRight__item1
               = link_to new_user_session_path, class:"login" do

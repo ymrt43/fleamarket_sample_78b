@@ -19,7 +19,7 @@
 .LogoutContainer
   .LogoutContent
     .LogoutContent__Btn
-      = link_to "ログアウト",destroy_user_session_path, {class: "LogoutContent__Btn--Blue", method: :delete}
+      = link_to "ログアウト",destroy_user_session_path, {class: "LogoutContent__Btn--Blue", method: :get}
 
 = render partial: 'items/appBanner'
 = render partial: 'items/footer'
