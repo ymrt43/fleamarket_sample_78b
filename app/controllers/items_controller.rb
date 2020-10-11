@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:show, :destroy]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -25,14 +25,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @categories = Category.all
+    @prefectures = Prefecture.all
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   def show
     @parents = Category.where(ancestry: nil)
-  end
-
-  def buy
-  end
-
-  def edit
   end
 
   def destroy
@@ -42,11 +49,14 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  
+
+  def buy
+  end
+
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :brand, :state, :fee, :prefecture_id, :term, :price, :category_id, images_attributes: [:src]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :brand, :state, :fee, :prefecture_id, :term, :price, :category_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def move_to_index

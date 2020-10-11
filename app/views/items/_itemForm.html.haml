@@ -11,13 +11,12 @@
             = f.fields_for :images do |i|
               = i.label :src do
                 .FormBlock__iSelection{data: {index: i.index}}
-                  = i.file_field :src, required: true, class: 'FormBlock__iSelection--file'
+                  = i.file_field :src, class: 'FormBlock__iSelection--file'
                   = icon('fas', 'camera', class: "FormBlock__iSelection--icon")
                   %p.FormBlock__iSelection--hwToUp
                     ドラッグアンドドロップ
                     %br/
                     またはクリックしてファイルをアップロード
-                  %span.FormBlock__iSelection--remove 削除
     %hr/
     .FormBlock
       .FormBlock__content
