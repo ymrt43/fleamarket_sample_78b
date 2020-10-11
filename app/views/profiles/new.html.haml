@@ -4,8 +4,6 @@
     .AccountPage__form
       %h2 会員情報入力 (2/2)
       = form_with model: @user, scope: 'user', url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
-        -# = form_with model: @address, url: new_profile_path, id: 'new_user', local: true do |f|
-        -# = devise_error_messages!
         .FormField
           .FormField__label--normal
             = f.label "郵便番号"
@@ -24,7 +22,7 @@
             = f.label "市区町村"
             %i 必須
           .FormField__input--normal
-            = f.text_field :city, autocomplete: "off", placeholder: "例) 大阪府北区"
+            = f.text_field :city, autocomplete: "off", placeholder: "例) 大阪市北区"
         .FormField
           .FormField__label--normal
             = f.label "番地"
@@ -47,6 +45,7 @@
             = f.hidden_field :name, value: @user_params[:name]
             = f.hidden_field :email, value: @user_params[:email]
             = f.hidden_field :password, value: @user_params[:password]
+            = f.hidden_field :password_confirmation, value: @user_params[:password_confirmation]
             = f.hidden_field :familyname, value: @user_params[:familyname]
             = f.hidden_field :firstname, value: @user_params[:firstname]
             = f.hidden_field :familykana, value: @user_params[:familykana]
