@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'   
+  } 
+
   devise_scope :user do
-    get "/sign_up" => "users/registrations#new", as: :new_user_registration
-    post "/sign_up" => "users/registrations#create", as: :user_registration
-    get "/sign_in" => "users/sessions#new", as: :user_session
+    get "sign_in", :to => "users/sessions#new"
+    get "sign_out", :to => "users/sessions#destroy" 
   end
-  devise_for :users
 
   root 'items#index'
   resources :users, only: [:index, :edit]

@@ -2,7 +2,7 @@
   .HeaderInside
     .HeaderMain
       .Icon
-        = link_to "#" do
+        = link_to root_path do
           = image_tag 'logo.png', size:'140x41', class: 'Icon__logo'
       .SearchBox
         = form_with(method: :get, class: "form") do |form|
@@ -19,10 +19,14 @@
           = link_to "#", class:"brand" do
             ブランド
       %ul.ListRight
-        -# user_signed_in? マイページ
-        %li.ListRight__item1
-          = link_to user_session_path, class:"login" do
-            ログイン
-        %li.ListRight__item2
-          = link_to new_user_registration_path, class:"new" do
-            新規会員登録
+        - if !request.path_info.eql?(new_profile_path) && !request.path_info.eql?(new_user_registration_path)
+          - if user_signed_in?
+            = link_to users_path, class:"login" do
+              マイページ
+          - else
+            %li.ListRight__item1
+              = link_to new_user_session_path, class:"login" do
+                ログイン
+            %li.ListRight__item2
+              = link_to new_user_registration_path, class:"new" do
+                新規会員登録
