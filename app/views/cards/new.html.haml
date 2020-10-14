@@ -24,11 +24,11 @@
       クレジットカード情報入力
   .Contents
     .NrForm
-      %label.NrForm__title
+      = form_tag(pay_cards_path, class:'NrForm__title', method: :post, id: 'charge-form',  name: "inputForm") do
         カード番号
-      %span.NrForm__required
-        必須
-      %input.NrForm__input{type:"text",name:"card_number",placeholder:"半角数字のみ"}
+        %span.NrForm__required
+          必須
+      = text_field_tag "number", "", class: "NrForm__input", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
       %ul.CardsIcon
         %li.CardsIcon__list
           = image_tag 'visa.svg',size:'44x22'
@@ -82,14 +82,14 @@
         セキュリティコード
       %span.SecurityForm__required
         必須
-      %input.SecurityForm__input{type:"text",placeholder:"カード背面４桁もしくは３桁の番号"}
+      = text_field_tag "cvc", "", class: "SecurityForm__input", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4", id: "cvc"
     .Token
       .TokenInfo
         %span.TokenInfo__icon ?
         %p.TokenInfo__about カード裏面の番号とは？
     .Btn
-      %button.Btn__title{type:"submit"}
-        追加する
+      #card_to
+      = submit_tag "追加する", type: 'submit', id: "token_submit",class:'Btn__title' 
       = link_to "/users",class:"Btn__back" do
         もどる
 = render partial: 'items/appBanner'
