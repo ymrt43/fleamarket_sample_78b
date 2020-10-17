@@ -57,4 +57,9 @@ $(function(){
 
     if ($('.ImageBox__file').length == 0) $('#ImageBox').append(buildFileField(fileIndex[0]));
   });
+
+  $('#item_description').on('keyup', function() {
+    var count = $(this).val().length;
+    $('.counter').text(count)
+  })
 });
