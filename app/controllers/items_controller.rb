@@ -52,7 +52,9 @@ class ItemsController < ApplicationController
   def search
     respond_to do |format|
       format.html
-      format.json
+      format.json do
+        @children = Category.find(params[:parent_id]).children
+      end
     end
   end
 
