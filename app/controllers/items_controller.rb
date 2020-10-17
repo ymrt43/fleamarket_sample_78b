@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, except: [:index, :new, :create]
+  before_action :set_parents, except: [:destroy, :buy]
 
   def index
-    @parents = Category.where(ancestry: nil)
     @items = Item.all
   end
 
@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
   end
   
   def create
-    # binding.pry
     @categories = Category.all
     @prefectures = Prefecture.all
     @item = Item.new(item_params)
@@ -40,7 +39,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @parents = Category.where(ancestry: nil)
   end
 
   def destroy
@@ -69,4 +67,9 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
+
 end
