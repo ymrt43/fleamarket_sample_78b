@@ -49,8 +49,15 @@ class ItemsController < ApplicationController
     end
   end
 
-  def buy
+  def search
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
+
+  def buy
+  end  
 
   private
 
