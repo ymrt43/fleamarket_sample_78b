@@ -153,10 +153,10 @@ hr {
 .ImageBox {
   &__show {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     text-align: center;
     margin-top: 10px;
+    margin-left: 5px;
   }
   &__preview {
     margin:5px 10px;
