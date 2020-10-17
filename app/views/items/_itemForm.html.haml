@@ -6,17 +6,28 @@
           %label.FormBlock__content--title 出品画像
           %span.req 必須
         %p.FormBlock__content--info2 最大10枚までアップロードできます
-        .FormBlock__images
-          .FormBlock__iSelectsField
-            = f.fields_for :images do |i|
-              = i.label :src do
-                .FormBlock__iSelection{data: {index: i.index}}
-                  = i.file_field :src, class: 'FormBlock__iSelection--file'
-                  = icon('fas', 'camera', class: "FormBlock__iSelection--icon")
-                  %p.FormBlock__iSelection--hwToUp
-                    ドラッグアンドドロップ
-                    %br/
-                    またはクリックしてファイルをアップロード
+        #ImageBox
+          .ImageBox__show
+            #previews
+              - if @item.persisted?
+                - @item.images.each_with_index do |image, i|
+                  .ImageBox__preview
+                    = image_tag image.src.url, height: '100', width: '100', data: {index: i}
+                    .ImageBox__remove 削除
+              %label{for: "item_images_attributes_0_src", class: 'ImageBox__inputLabel', id: 'label-box-0'}
+                .ImageBox__inputLabel--visible
+                  = icon('fas', 'camera', class: "ImageBox__inputLabel--icon")
+                  %p.ImageBox__inputLabel--hwToUp ファイルを選択
+          .ImageBox__hidden
+            = f.fields_for :images do |image|
+              .ImageBox__fileGroup{data: {index: image.index}}
+                = image.file_field :src, class: 'ImageBox__file', id: 'item_images_attributes_0_src'
+                %br/
+              - if @item.persisted?
+                = image.check_box :_destroy, {data:{index: image.index}}, class: 'hidden-destroy'
+            - if @item.persisted?
+              .ImageBox__fileGroup{data: {index: @item.images.count}}
+                = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'ImageBox__file'
     %hr/
     .FormBlock
       .FormBlock__content
