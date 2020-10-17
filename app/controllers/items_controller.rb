@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_parents, except: [:destroy, :buy]
 
   def index
-    @items = Item.all
+    @items = Item.all.includes(:images)
   end
 
   def new
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     @prefectures = Prefecture.all
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to "/items/#{@item.id}"
     else
       render :new
     end
@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :brand, :state, :fee, :prefecture_id, :term, :price, :category_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :brand, :state, :fee, :prefecture_id, :term, :price, :category_id, images_attributes: [:src, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def move_to_index
