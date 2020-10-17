@@ -235,6 +235,25 @@ hr {
     @include textFieldShape();
     @include textFieldLarge();
     color: #222222;
+    &--inner {
+      @include textFieldShape();
+      width: 620px;
+      height: 48px;
+      margin: 16px 0 16px;
+      color: #222222;
+    }
+    &--child {
+      @include textFieldShape();
+      width: 620px;
+      height: 48px;
+      margin: 16px 0 16px;
+      color: #222222;
+    }
+    &--gc {
+      @include textFieldShape();
+      @include textFieldLarge();
+      color: #222222;
+    }
   }
   &__short {
     @include textFieldShape();
