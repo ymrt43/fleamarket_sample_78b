@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :cards, only: [:new, :show, :destroy]
   resources :items do
     collection do
-      get :search
+      get :search, defaults: { format: 'json' }
     end
   end
   get 'items_buy', to: 'items#buy'
