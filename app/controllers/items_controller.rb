@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, except: [:index, :new, :create, :search]
   before_action :set_parents, except: [:destroy, :buy]
+  before_action :set_prefectures, only: [:new, :create, :edit, :update]
 
   def index
     @items = Item.all.includes(:images)
@@ -10,26 +11,21 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-    @categories = Category.all
-    @prefectures = Prefecture.all
   end
-  
+
   def create
-    @categories = Category.all
-    @prefectures = Prefecture.all
     @item = Item.new(item_params)
     if @item.save
       redirect_to "/items/#{@item.id}"
     else
+      @item.images.new
       render :new
     end
   end
-
+  
   def edit
-    @categories = Category.all
-    @prefectures = Prefecture.all
   end
-
+  
   def update
     if @item.update(item_params)
       redirect_to "/items/#{@item.id}"
@@ -83,6 +79,10 @@ class ItemsController < ApplicationController
 
   def set_parents
     @parents = Category.where(ancestry: nil)
+  end
+  
+  def set_prefectures
+    @prefectures = Prefecture.all
   end
 
 end
