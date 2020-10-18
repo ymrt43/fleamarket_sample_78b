@@ -11,23 +11,23 @@
             #previews
               - if @item.persisted?
                 - @item.images.each_with_index do |image, i|
-                  .ImageBox__preview
+                  .ImageBox__preview{data: {index: i}}
                     = image_tag image.src.url, height: '100', width: '100', data: {index: i}
                     .ImageBox__remove 削除
-              %label{for: "item_images_attributes_0_src", class: 'ImageBox__inputLabel', id: 'label-box-0'}
+              %label{for: "item_images_attributes_#{@item.images.count}_src", class: 'ImageBox__inputLabel', id: 'label-box-0'}
                 .ImageBox__inputLabel--visible
                   = icon('fas', 'camera', class: "ImageBox__inputLabel--icon")
                   %p.ImageBox__inputLabel--hwToUp ファイルを選択
           .ImageBox__hidden
             = f.fields_for :images do |image|
               .ImageBox__fileGroup{data: {index: image.index}}
-                = image.file_field :src, class: 'ImageBox__file', id: 'item_images_attributes_0_src', required: true
+                = image.file_field :src, class: 'ImageBox__file', id: 'item_images_attributes_0_src'
                 %br/
               - if @item.persisted?
                 = image.check_box :_destroy, {data:{index: image.index}}, class: 'hidden-destroy'
             - if @item.persisted?
               .ImageBox__fileGroup{data: {index: @item.images.count}}
-                = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'ImageBox__file'
+                = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'ImageBox__file', id: "item_images_attributes_#{@item.images.count}_src"
     %hr/
     .FormBlock
       .FormBlock__content
@@ -52,7 +52,10 @@
         .FormBlock__content--info
           = f.label :category_id, "カテゴリー", class: "FormBlock__content--title"
           %span.req 必須
-        = f.collection_select :category_id, @parents, :id, :name, { include_blank: "選択してください" }, { class: "FormBox__select--inner", required: true }
+        = f.collection_select :category_id, Category.roots, :id, :name, { include_blank: "選択してください", selected: @item.category&.root&.id }, { class: "FormBox__select--inner", required: true }
+        - if @item.category
+          = f.collection_select :category_id, @item.category.parent.siblings, :id, :name, { include_blank: "選択してください", selected: @item.category&.parent&.id }, { class: "FormBox__select--child", required: true }
+          = f.collection_select :category_id, @item.category.siblings, :id, :name, { include_blank: "選択してください", selected: @item.category&.id }, { class: "FormBox__select--gc", required: true }
       .FormBlock__content
         .FormBlock__content--info
           = f.label :brand, "ブランド", class: "FormBlock__content--title"
@@ -92,24 +95,24 @@
         %span
           =link_to "###", class: "Link__blue" do
             = icon('far', 'question-circle')
-      .FormBlock__content
+      .FormBlock__content#PriceSet
         .FormBlock__price
           .FormBlock__content--info
             = f.label :price, "販売価格", class: "FormBlock__content--title"
             %span.req 必須
-          .FormBlock__price
+          .FormBlock__price--field
             %span.FormBlock__price--yen ¥
-            = f.number_field :price, placeholder: "0", required: true, class: "FormBox__short"
+            = f.number_field :price, placeholder: "0", required: true, min: 300, max: 9999999, class: "FormBox__short"
       .FormBlock__calc
         .FormBlock__calc--left
           販売手数料（10%）
-        .FormBlock__calc--right
+        .FormBlock__calc--right#salesCommission
           ー
       %hr.short/
       .FormBlock__calc
         .FormBlock__calc--left
           販売利益
-        .FormBlock__calc--right
+        .FormBlock__calc--right#salesProfit
           ー
     .FormBlock__btn
       = f.submit "出品する", class: "FormBlock__btn--market"
