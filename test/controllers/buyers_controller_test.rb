@@ -1,13 +1,13 @@
 require 'test_helper'
 
-class BuyerControllerTest < ActionDispatch::IntegrationTest
+class BuyersControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get buyer_index_url
+    get buyers_index_url
     assert_response :success
   end
 
   test "should get done" do
-    get buyer_done_url
+    get buyers_done_url
     assert_response :success
   end
 
