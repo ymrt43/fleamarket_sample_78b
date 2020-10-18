@@ -9,10 +9,17 @@ $(function(){
   }
 
   function buildImg(index, url) {
-    const html = `<div class="ImageBox__preview">
+    const html = `<div data-index="${index}" class="ImageBox__preview">
                     <img data-index="${index}" src="${url}" width="100px" height="100px">
                     <div class="ImageBox__remove">削除</div>
                   </div>`;
+    return html;
+  }
+
+  function buildValid() {
+    const html = `<div class="price-validation">
+                    ※価格は¥300〜9,999,999で設定してください
+                  </div>`
     return html;
   }
 
@@ -44,22 +51,34 @@ $(function(){
 
   $('#ImageBox').on('click', '.ImageBox__remove', function() {
     const targetIndex = $(this).parent().data('index');
-    console.log(targetIndex)
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+
     if (hiddenCheck) hiddenCheck.prop('checked', true);
 
     $(this).parent().remove();
-    $(`img[data-index="${targetIndex}"]`).remove();
+    $(`.ImageBox__fileGroup[data-index="${targetIndex}"]`).remove();
+
+    if ($('.ImageBox__fileGroup').length == 0) $('.ImageBox__hidden').append(buildFileField(fileIndex[0]));
+    
     var count = $('.ImageBox__preview').length;
     if (count <= 9) {
       $('.ImageBox__inputLabel').show();
     }
-
-    if ($('.ImageBox__file').length == 0) $('#ImageBox').append(buildFileField(fileIndex[0]));
   });
 
-  $('#item_description').on('keyup', function() {
+  $('#item_description').on('keyup change', function() {
     var count = $(this).val().length;
     $('.counter').text(count)
+  })
+
+  $('#item_price').on('change', function(){
+    if ($('.price-validation')) $('.price-validation').remove();
+    var price = $(this).val();
+    if (price < 300 || price > 9999999) $('#PriceSet').append(buildValid());
+
+    const salesCommission = Math.ceil(price * 0.1)
+    const salesProfit = Math.floor(price - salesCommission)
+    $('#salesCommission').text(`¥${salesCommission}`);
+    $('#salesProfit').text(`¥${salesProfit}`);
   })
 });
