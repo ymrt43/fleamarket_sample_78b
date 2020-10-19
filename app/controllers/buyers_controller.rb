@@ -5,7 +5,6 @@ class BuyersController < ApplicationController
 
   def index
     @user = current_user
-    @address = Prefecture.all
     @profile = Profile.find_by(user_id: current_user.id)
     @address = Address.find_by(user_id: current_user.id)
     @card = Card.where(user_id: current_user.id).first
@@ -30,6 +29,7 @@ class BuyersController < ApplicationController
     :customer => @card.customer_id, #顧客ID
     :currency => 'jpy', #日本円
   )
+
   @item.update(buyer_id: current_user.id)
   redirect_to action: 'done' #完了画面に移動
   end
