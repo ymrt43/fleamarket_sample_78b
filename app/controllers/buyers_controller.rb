@@ -2,12 +2,17 @@ class BuyersController < ApplicationController
   require 'payjp'
   before_action :set_card, :set_item
 
+
   def index
+    @user = current_user
+    @address = Prefecture.all
+    @profile = Profile.find_by(user_id: current_user.id)
+    @address = Address.find_by(user_id: current_user.id)
     @card = Card.where(user_id: current_user.id).first
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if @card.blank?
       #登録された情報がない場合にカード登録画面に移動
-      redirect_to controller: "card", action: "new"
+      redirect_to new_card_path
     else
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
       #保管した顧客IDでpayjpから情報取得
@@ -21,10 +26,11 @@ class BuyersController < ApplicationController
     @card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     Payjp::Charge.create(
-    :amount => @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）
+    :amount => @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）@item.price,
     :customer => @card.customer_id, #顧客ID
     :currency => 'jpy', #日本円
   )
+  @item.update(buyer_id: current_user.id)
   redirect_to action: 'done' #完了画面に移動
   end
 
@@ -33,8 +39,7 @@ class BuyersController < ApplicationController
   end
 
   def set_item
-    # @item = Item.find(params[:id])
-    # @item = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])
   end
 
 end

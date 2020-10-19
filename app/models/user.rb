@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy, validate: true
   accepts_nested_attributes_for :address
 
-  has_one :card, dependent: :destroy
+  has_one :card
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true

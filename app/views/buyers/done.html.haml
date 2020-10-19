@@ -27,7 +27,7 @@
       .ItemPrice__title
         支払い金額
       .ItemPrice__price
-        ¥ 1,000
+        = "¥ #{@item.price}"
   .BtnTop
     .BtnIcon
       = link_to "/",class:"BtnIcon__top" do

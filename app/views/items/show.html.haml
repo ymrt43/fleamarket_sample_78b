@@ -88,6 +88,12 @@
                 編集
               = link_to item_path(@item), method: :delete, class:"ItemOption__SellerArea--delete" do
                 削除
+          .ItemOption__BuyerArea
+            - if @item.buyer_id.present?
+              .ItemOption__BuyerArea--btn
+                ※購入済み
+            - elsif current_user.id != @item.user_id
+              = link_to "購入する", item_buyers_path(@item), class: "ItemOption__BuyerArea--btn"
           .ItemOption__note
             = link_to "#", class:"ItemOption__note--flag" do
               = icon("fas", "flag", class:"ItemOption__note--flag" )

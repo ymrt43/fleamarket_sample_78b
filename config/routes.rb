@@ -19,15 +19,16 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items
+  resources :items do
+    resources :buyers, only: [:index] do
+      collection do
+        post 'pay', to: 'buyers#pay'
+        get 'done', to: 'buyers#done'
+      end
+    end
+  end
   get 'items_buy', to: 'items#buy'
   resources :profiles, only: [:index, :new, :post, :create]
 
-  resources :buyers, only: [:index] do
-    collection do
-      get 'index', to: 'buyers#index'
-      post 'pay', to: 'buyers#pay'
-      get 'done', to: 'buyers#done'
-    end
-  end
+  
 end

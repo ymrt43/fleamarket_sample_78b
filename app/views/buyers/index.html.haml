@@ -25,13 +25,13 @@
   .DetailBox
     .ItemDetail
       .ItemDetail__title
-        きのこ
+        = @item.name
     .ItemDetailBox
       .ItemDetailBox__img
-        = image_tag 'product1.jpg',size:'100x100', class: 'ItemDetailBox__img--item'
-        -# = image_tag @item.images[0].src.url, size:'560x346', class: "ItemDetail__name--img"
+        -# = image_tag 'product1.jpg',size:'100x100', class: 'ItemDetailBox__img--item'
+        = image_tag @item.images[0].src.url, size:'120x100', class: "ItemDetail__name--img"
       .ItemDetailBox__price
-        ¥ 1,000
+        = "¥ #{@item.price}"
         .ItemDetailBox__tax
           送料込み (税込)
   .PriceBox
@@ -39,7 +39,7 @@
       .ItemPrice__title
         支払い金額
       .ItemPrice__price
-        ¥ 1,000
+        = "¥ #{@item.price}"
   .PaymentBox
     .ItemPayment
       .ItemPayment__title
@@ -47,10 +47,14 @@
       .ItemPayment__info
         登録クレジットカード情報 
       .ItemPayment__card
-        %br **** **** **** 4242
-        1 / 23
+        %br 
+        = "**** **** **** " + @default_card_information.last4
+        %br
+        - exp_month = @default_card_information.exp_month.to_s
+        - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+        = exp_month + " / " + exp_year
       .PaymentChange
-        = link_to cards_path, class:"PaymentChange__btn" do
+        = link_to pay_cards_path, class:"PaymentChange__btn" do
           .PaymentChange__icon
             %i.fa.fa-plus-circle
           .PaymentChange__btn
@@ -60,18 +64,24 @@
       .ItemDelivery__title
         配送先
       .ItemDelivery__address
-        〒 100-0000
-        %br 北海道 あああああ あああああ
+        〒 
+        = @address.postalcode.to_s.insert(3, "-")
+        %br
+        = @address.prefecture.name
+        = @address.city
+        = @address.house_number
       .ItemDelivery__tel
         TEL：
+        = @address.dial_number
       .ItemDelivery__name
-        名前： 佐藤 太郎
+        名前：
+        = @profile.familyname
+        = @profile.firstname
   .BtnBox
     .Btn
-      = form_with url:pay_buyers_path, method: :post,local: true do |f|
+      = form_with url: pay_item_buyers_path, method: :post,local: true do |f|
         = f.submit "購入する", class: "Btn__title"
       = link_to "/users",class:"Btn__back" do
-
         もどる
 
 = render partial: 'items/appBanner'

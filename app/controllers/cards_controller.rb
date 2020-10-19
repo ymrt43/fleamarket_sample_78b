@@ -1,6 +1,8 @@
 class CardsController < ApplicationController
 
   require "payjp"
+
+  
   
   def new
     if user_signed_in?
@@ -30,7 +32,7 @@ class CardsController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     @card = Card.find_by(user_id: current_user.id)
     if @card.present?
@@ -53,5 +55,4 @@ class CardsController < ApplicationController
     end
   end
 
-  
 end
