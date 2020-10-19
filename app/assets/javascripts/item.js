@@ -37,7 +37,7 @@ $(function(){
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {
-      $('#previews').prepend(buildImg(targetIndex, blobUrl));
+      $('#previews').append(buildImg(targetIndex, blobUrl));
       $('.ImageBox__hidden').append(buildFileField(fileIndex[0]));
       $('.ImageBox__inputLabel').attr({id: `label-box-${fileIndex[0]}`,for: `item_images_attributes_${fileIndex[0]}_src`});
       fileIndex.shift();
