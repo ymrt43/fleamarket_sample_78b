@@ -1,10 +1,10 @@
 // 全体３分割
-.Auction {
+.Market {
   width: 100%;
   background-color: #f8f8f8;
 }
 
-.AuctionField{
+.MarketField{
   display: flex;
   flex-direction: column;
   &__header{
@@ -73,7 +73,7 @@ hr {
 }
 
 // オークション実行ボタン
-@mixin auctionBtn($wid: 360px) {
+@mixin marketBtn($wid: 360px) {
   width: $wid;
   background-color: #3CCACE;
   color: #ffffff;
@@ -115,35 +115,6 @@ hr {
       @include textBold();
     }
   }
-  &__images {
-    margin-top: 8px;
-    padding: 0px 4px;
-  }
-  &__iSelectsField {
-    text-align: center;
-    background-color: rgb(245, 245, 245);
-    border: 1px dashed rgb(204, 204, 204);
-    height: 150px;
-  }
-  &__iSelection {
-    height: 100%;
-    padding: 40px 0;
-    &--file {
-      display: none;
-    }
-    &--icon {
-      height: 24px;
-      width: 24px;
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-    &--hwToUp {
-      line-height: 1.4em;
-      font-size: 12px;
-      width: 100%;
-      color: #333333;
-    }
-  }
   &__price {
     display: flex;
     justify-content: space-between;
@@ -163,8 +134,8 @@ hr {
   &__btn {
     margin: 0px auto 32px;
     text-align: center;
-    &--auction {
-      @include auctionBtn();
+    &--market {
+      @include marketBtn();
     }
     &--return {
       display: block;
@@ -178,15 +149,79 @@ hr {
   }
 }
 
+.price-validation {
+  background-color: #ff0211;
+  color: #ffffff;
+  text-align: center;
+  padding: 5px;
+  font-size: 12px;
+  width: 100%;
+  font-weight: bold;
+}
+
+// image投稿用CSS
+.ImageBox {
+  &__show {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+  &__preview {
+    margin:5px 10px;
+  }
+  &__remove {
+    color: #0095ee;
+    font-size: 12px;
+  }
+  &__inputLabel {
+    height: 120px;
+    &--visible {
+      text-align: center;
+      background-color: rgb(245, 245, 245);
+      border: 1px dashed rgb(204, 204, 204);
+      padding: 30px 0;
+      height: 100px;
+      width: 100px;
+      margin: 5px 10px;
+    }
+    &--icon {
+      height: 24px;
+      width: 24px;
+      font-size: 20px;
+    }
+    &--hwToUp {
+        line-height: 1.4em;
+        font-size: 12px;
+        width: 100%;
+        color: #888888;
+    }
+  }
+  &__hidden {
+    display: none;
+  }
+}
+
+#previews {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 // フォーム要素
 @mixin textFieldShape($pad: 0 16px) {
   border: 1px solid #cccccc;
+  outline: none;
   border-radius: 4px;
   box-sizing: border-box;
   outline: none;
   font-size: 16px;
   width: 100%;
   padding: $pad;
+  &:focus {
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
+    border: 1px solid #3CCACE
+  }
 }
 
 @mixin textFieldLarge($wid: 620px) {
@@ -215,6 +250,25 @@ hr {
     @include textFieldShape();
     @include textFieldLarge();
     color: #222222;
+    &--inner {
+      @include textFieldShape();
+      width: 620px;
+      height: 48px;
+      margin: 16px 0 16px;
+      color: #222222;
+    }
+    &--child {
+      @include textFieldShape();
+      width: 620px;
+      height: 48px;
+      margin: 16px 0 16px;
+      color: #222222;
+    }
+    &--gc {
+      @include textFieldShape();
+      @include textFieldLarge();
+      color: #222222;
+    }
   }
   &__short {
     @include textFieldShape();
@@ -240,7 +294,7 @@ hr {
   }
 }
 
-.Logo__auction {
+.Logo__market {
   filter: invert(50%) sepia(0%) saturate(11%) hue-rotate(143deg) brightness(101%) contrast(93%);
   vertical-align: bottom;
 }
@@ -334,7 +388,7 @@ hr {
     text-align: center;
     margin: 0 auto;
     &--buy {
-      @include auctionBtn(100%);
+      @include marketBtn(100%);
     }
   }
 }

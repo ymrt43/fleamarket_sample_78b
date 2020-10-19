@@ -1,38 +1,40 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:show, :destroy]
+  before_action :set_item, except: [:index, :new, :create, :search]
+  before_action :set_parents, except: [:destroy, :buy]
+  before_action :set_prefectures, only: [:new, :create, :edit, :update]
 
   def index
-    @parents = Category.where(ancestry: nil)
-    @items = Item.all
+    @items = Item.all.includes(:images)
   end
 
   def new
     @item = Item.new
     @item.images.new
-    @categories = Category.all
-    @prefectures = Prefecture.all
   end
-  
+
   def create
-    @categories = Category.all
-    @prefectures = Prefecture.all
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to item_path(@item)
     else
+      @item.images.new
       render :new
+    end
+  end
+  
+  def edit
+  end
+  
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      render :edit
     end
   end
 
   def show
-    @parents = Category.where(ancestry: nil)
-  end
-
-  def buy
-  end
-
-  def edit
   end
 
   def destroy
@@ -42,11 +44,27 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  
+
+  def search
+    respond_to do |format|
+      format.html
+      format.json do
+        if params[:parent_id]
+          @children = Category.find(params[:parent_id]).children
+        elsif params[:child_id]
+          @grandchildren = Category.find(params[:child_id]).children
+        end
+      end
+    end
+  end
+
+  def buy
+  end  
+
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :brand, :state, :fee, :prefecture_id, :term, :price, :category_id, images_attributes: [:src]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :brand, :state, :fee, :prefecture_id, :term, :price, :category_id, images_attributes: [:src, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def move_to_index
@@ -58,4 +76,13 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
+  
+  def set_prefectures
+    @prefectures = Prefecture.all
+  end
+
 end
