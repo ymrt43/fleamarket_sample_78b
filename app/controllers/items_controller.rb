@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to "/items/#{@item.id}"
+      redirect_to item_path(@item)
     else
       @item.images.new
       render :new
@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
   
   def update
     if @item.update(item_params)
-      redirect_to "/items/#{@item.id}"
+      redirect_to item_path(@item)
     else
       render :edit
     end
