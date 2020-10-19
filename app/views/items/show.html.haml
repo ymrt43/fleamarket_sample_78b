@@ -44,7 +44,7 @@
               %tr.TableDetail
                 %th.TableDetail__title 出品者
                 %td.TableDetail__inner  
-                  = @item.user.name
+                  = @item.seller.name
               %tr.TableDetail
                 %th.TableDetail__title カテゴリー
                 %td.TableDetail__inner 
@@ -83,7 +83,7 @@
               = icon("fas", "star", class:"ItemOption__like--btn")
               お気に入り
           .ItemOption__SellerArea
-            - if user_signed_in? && current_user.id == @item.user_id
+            - if user_signed_in? && current_user.id == @item.seller_id
               = link_to edit_item_path(@item), class:"ItemOption__SellerArea--edit" do
                 編集
               = link_to item_path(@item), method: :delete, class:"ItemOption__SellerArea--delete" do
