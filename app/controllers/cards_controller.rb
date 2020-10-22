@@ -2,8 +2,6 @@ class CardsController < ApplicationController
 
   require "payjp"
 
-  
-  
   def new
     if user_signed_in?
       card = Card.where(user_id: current_user.id)
