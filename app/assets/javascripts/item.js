@@ -82,3 +82,13 @@ $(function(){
     $('#salesProfit').text(`¥${salesProfit}`);
   })
 });
+
+$(document).ready(function(){
+  if ($('.price-validation')) $('.price-validation').remove();
+  var price = $('#item_price').val();
+
+  const salesCommission = Math.ceil(price * 0.1)
+  const salesProfit = Math.floor(price - salesCommission)
+  $('#salesCommission').text(`¥${salesCommission}`);
+  $('#salesProfit').text(`¥${salesProfit}`);
+});
