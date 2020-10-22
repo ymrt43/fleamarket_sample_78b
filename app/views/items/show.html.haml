@@ -92,8 +92,13 @@
             - if @item.buyer_id.present?
               .ItemOption__BuyerArea--btn
                 ※購入済み
-            - elsif current_user.id != @item.user_id
-              = link_to "購入する", item_buyers_path(@item), class: "ItemOption__BuyerArea--btn"
+            - elsif user_signed_in?
+              - unless current_user.id == @item.seller_id
+                = link_to "購入する", item_buyers_path(@item), class: "ItemOption__BuyerArea--btn"
+            - else
+              = link_to new_user_registration_path, class: "ItemOption__BuyerArea--btn" do
+                新規会員登録
+
           .ItemOption__note
             = link_to "#", class:"ItemOption__note--flag" do
               = icon("fas", "flag", class:"ItemOption__note--flag" )
@@ -108,7 +113,7 @@
             %br
             不快な言葉遣いなどは利用制限や退会処分となることがあります。
           .CommentBox__Btn
-            = button_tag type: 'submit', class: "CommentBox__Btn--btn" do
+            = link_to '#', class: "CommentBox__Btn--btn" do
               = icon('fas', 'comment')
               コメントする
 

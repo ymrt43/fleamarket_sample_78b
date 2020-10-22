@@ -210,15 +210,17 @@
           }
           &__Btn {
             text-align: center;
+            margin-top: 30px;
             &--btn {
               font-size: 18px;
               line-height: 48px;
               background: #3ccace;
               border: 1px solid #3ccace;
               color: #ffffff;
-              width: 60%;
               border-radius: 100px;
-              margin: 10px 0;
+              padding: 10px 40px;
+              text-decoration: none;
+              margin-top: 100px;
             }
           }
         }
