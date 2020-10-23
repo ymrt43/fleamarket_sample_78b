@@ -2,7 +2,6 @@ class BuyersController < ApplicationController
   require 'payjp'
   before_action :set_card, :set_item
 
-
   def index
     @profile = current_user.profile
     @address = current_user.address
@@ -22,7 +21,7 @@ class BuyersController < ApplicationController
   def pay
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     Payjp::Charge.create(
-    :amount => @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）@item.price,
+    :amount => @item.price, #支払金額を入力
     :customer => @card.customer_id, #顧客ID
     :currency => 'jpy', #日本円
   )
