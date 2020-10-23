@@ -1,22 +1,27 @@
 require 'rails_helper'
 describe Card do
-  describe'#create' do
-    it "user_id, customer_id, card_idが存在すれば登録できること" do
-      card = FactoryBot.build(:card)
+  describe '#create' do
+
+    it "user_id,customer_id, card_idを全て存在すれば登録できること" do
+      user = create(:user)
+      card = FactoryBot.build(:card, user_id: user[:id])
       expect(card).to be_valid
     end
-    it "user_idが無い場合は登録できないこと" do
-      card = FactoryBot.build(:card, user_id: nil)
+
+    it "user_idがない場合は登録できないこと" do
+      card = build(:card, user_id: nil)
       card.valid?
-      expect(card.errors[:user_id]).to include("を入力してください")
+      expect(card.errors[:user]).to include("を入力してください")
     end
-    it "customer_idが無い場合は登録できないこと" do
-      card = FactoryBot.build(:card, customer_id: nil)
+    
+    it "customer_idがない場合は登録できないこと" do
+      card = build(:card, customer_id: nil)
       card.valid?
       expect(card.errors[:customer_id]).to include("を入力してください")
     end
-    it "card_idが無い場合は登録できないこと" do
-      card = FactoryBot.build(:card, card_id: nil)
+    
+    it "card_idがない場合は登録できないこと" do
+      card = build(:card, card_id: nil)
       card.valid?
       expect(card.errors[:card_id]).to include("を入力してください")
     end
