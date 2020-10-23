@@ -4,11 +4,9 @@ class BuyersController < ApplicationController
 
 
   def index
-    @user = current_user
     @profile = Profile.find_by(user_id: current_user.id)
     @address = Address.find_by(user_id: current_user.id)
-    @card = Card.where(user_id: current_user.id).first
-    #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
+    #テーブルからpayjpの顧客IDを検索
     if @card.blank?
       #登録された情報がない場合にカード登録画面に移動
       redirect_to new_card_path
@@ -22,7 +20,6 @@ class BuyersController < ApplicationController
   end
 
   def pay
-    @card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     Payjp::Charge.create(
     :amount => @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）@item.price,

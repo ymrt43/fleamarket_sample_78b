@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
-
   require "payjp"
+  before_action :set_card
 
   def new
     if user_signed_in?
@@ -32,7 +32,6 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    @card = Card.find_by(user_id: current_user.id)
     if @card.present?
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
       customer = Payjp::Customer.retrieve(@card.customer_id)
@@ -43,7 +42,6 @@ class CardsController < ApplicationController
   end
 
   def show #Cardのデータpayjpに送り情報を取り出す
-    @card = Card.find_by(user_id: current_user.id)
     if @card.blank?
       redirect_to new_card_path 
     else
@@ -51,6 +49,10 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card_information = customer.cards.retrieve(@card.card_id)
     end
+  end
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
   end
 
 end
