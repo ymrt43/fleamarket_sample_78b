@@ -4,8 +4,8 @@ class BuyersController < ApplicationController
 
 
   def index
-    @profile = Profile.find_by(user_id: current_user.id)
-    @address = Address.find_by(user_id: current_user.id)
+    @profile = current_user.profile
+    @address = current_user.address
     #テーブルからpayjpの顧客IDを検索
     if @card.blank?
       #登録された情報がない場合にカード登録画面に移動
