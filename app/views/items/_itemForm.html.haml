@@ -9,25 +9,25 @@
         #ImageBox
           .ImageBox__show
             #previews
+              %label{for: "item_images_attributes_#{@item.images.count}_src", class: 'ImageBox__inputLabel', id: 'label-box-0'}
+                .ImageBox__inputLabel--visible
+                  = icon('fas', 'camera', class: "ImageBox__inputLabel--icon")
+                  %p.ImageBox__inputLabel--hwToUp ファイルを選択
               - if @item.persisted?
                 - @item.images.each_with_index do |image, i|
                   .ImageBox__preview{data: {index: i}}
                     = image_tag image.src.url, height: '100', width: '100', data: {index: i}
                     .ImageBox__remove 削除
-              %label{for: "item_images_attributes_#{@item.images.count}_src", class: 'ImageBox__inputLabel', id: 'label-box-0'}
-                .ImageBox__inputLabel--visible
-                  = icon('fas', 'camera', class: "ImageBox__inputLabel--icon")
-                  %p.ImageBox__inputLabel--hwToUp ファイルを選択
           .ImageBox__hidden
+            - if @item.persisted?
+              .ImageBox__fileGroup{data: {index: @item.images.count}}
+                = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'ImageBox__file', id: "item_images_attributes_#{@item.images.count}_src"
             = f.fields_for :images do |image|
               .ImageBox__fileGroup{data: {index: image.index}}
                 = image.file_field :src, class: 'ImageBox__file', id: 'item_images_attributes_0_src'
                 %br/
               - if @item.persisted?
-                = image.check_box :_destroy, {data:{index: image.index}}, class: 'hidden-destroy'
-            - if @item.persisted?
-              .ImageBox__fileGroup{data: {index: @item.images.count}}
-                = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'ImageBox__file', id: "item_images_attributes_#{@item.images.count}_src"
+                = image.check_box :_destroy, {data:{index: image.index}, class: 'hidden-destroy'}
     %hr/
     .FormBlock
       .FormBlock__content
@@ -105,7 +105,7 @@
             = f.number_field :price, placeholder: "0", required: true, min: 300, max: 9999999, class: "FormBox__short"
       .FormBlock__calc
         .FormBlock__calc--left
-          販売手数料（10%）
+          販売手数料（10％）
         .FormBlock__calc--right#salesCommission
           ー
       %hr.short/
@@ -115,7 +115,10 @@
         .FormBlock__calc--right#salesProfit
           ー
     .FormBlock__btn
-      = f.submit "出品する", class: "FormBlock__btn--market"
+      - if request.path == new_item_path
+        = f.submit "出品する", class: "FormBlock__btn--market"
+      - else
+        = f.submit "更新する", class: "FormBlock__btn--market"
       = link_to 'もどる', :back, class: "FormBlock__btn--return"
   .FormBlock__rules
     禁止されている
