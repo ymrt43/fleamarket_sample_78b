@@ -101,7 +101,7 @@
               - unless current_user.id == @item.seller_id
                 = link_to "購入する", item_buyers_path(@item), class: "ItemOption__BuyerArea--btn"
             - else
-              = link_to new_user_registration_path, class: "ItemOption__BuyerArea--btn" do
+              = link_to new_user_registration_path, class: "ItemOption__BuyerArea--new" do
                 新規会員登録
           .ItemOption__note
             = link_to "#", class:"ItemOption__note--flag" do
