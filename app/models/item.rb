@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   validates :name, presence: true, length: { maximum: 40, too_long: "最大%{count}文字まで使えます" }
   validates :description, presence: true, length: { maximum: 1000, too_long: "最大%{count}文字まで使えます" }
   validates :price, presence: true, inclusion: 300..9999999
-  validates :state, :fee, :term, presence: true
+  validates :state, :fee, :term, :prefecture, presence: true
 
   enum state: {
     "新品、未使用": 1, "未使用に近い": 2, "目立った傷や汚れなし": 3,
