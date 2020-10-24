@@ -83,11 +83,26 @@
               = icon("fas", "star", class:"ItemOption__like--btn")
               お気に入り
           .ItemOption__SellerArea
-            - if user_signed_in? && current_user.id == @item.seller_id
+            - if user_signed_in? && current_user.id == @item.seller_id && @item.buyer_id.present?
+              = link_to item_path(@item), method: :delete, class:"ItemOption__SellerArea--delete" do
+                削除
+              .ItemOption__BuyerArea--btn
+                ※購入済み
+            - elsif user_signed_in? && current_user.id == @item.seller_id 
               = link_to edit_item_path(@item), class:"ItemOption__SellerArea--edit" do
                 編集
               = link_to item_path(@item), method: :delete, class:"ItemOption__SellerArea--delete" do
                 削除
+          .ItemOption__BuyerArea
+            - if user_signed_in? && @item.buyer_id.present? && current_user.id != @item.seller_id
+              .ItemOption__BuyerArea--btn
+                ※購入済み
+            - elsif user_signed_in?
+              - unless current_user.id == @item.seller_id
+                = link_to "購入する", item_buyers_path(@item), class: "ItemOption__BuyerArea--btn"
+            - else
+              = link_to new_user_registration_path, class: "ItemOption__BuyerArea--new" do
+                新規会員登録
           .ItemOption__note
             = link_to "#", class:"ItemOption__note--flag" do
               = icon("fas", "flag", class:"ItemOption__note--flag" )
@@ -102,7 +117,7 @@
             %br
             不快な言葉遣いなどは利用制限や退会処分となることがあります。
           .CommentBox__Btn
-            = button_tag type: 'submit', class: "CommentBox__Btn--btn" do
+            = link_to '#', class: "CommentBox__Btn--btn" do
               = icon('fas', 'comment')
               コメントする
 

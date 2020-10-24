@@ -63,6 +63,6 @@ class ApplicationController < ActionController::Base
   end
 
   def address_params
-    params.require(:user).permit(:postalcode, :prefecture, :city, :house_number, :building_number, :dial_number)
+    params.require(:user).permit(:postalcode, :prefecture_id, :city, :house_number, :building_number, :dial_number)
   end
 end

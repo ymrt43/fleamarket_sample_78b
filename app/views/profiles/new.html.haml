@@ -15,7 +15,7 @@
             = f.label "都道府県"
             %i 必須
           .FormField__select--date
-            = f.collection_select :prefecture, Prefecture.all, :id, :name
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name
 
         .FormField
           .FormField__label--normal

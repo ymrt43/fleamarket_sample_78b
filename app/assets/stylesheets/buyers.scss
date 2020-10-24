@@ -1,0 +1,187 @@
+
+.BuyerContainer {
+  width: 100%;
+  background-color: whitesmoke;
+  padding: 20px 0;
+  .ItemTitle {
+    width: 700px;
+    height: 80px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid #f3f3f3;
+    &__name {
+      padding: 25px 0;
+      font-weight: bold;
+      font-size: 22px;
+    }
+  }
+  .DetailBox {
+    width: 700px;
+    height: 200px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    border-bottom: 1px solid #f3f3f3;
+    padding: 15px 16px;
+    .ItemDetail {
+      width: 400px;
+      margin: 10px auto;
+      &__title {
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+      }
+    }
+    .ItemDetailBox {
+      width: 300px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      &__price {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 20px;
+      }
+      &__tax {
+        font-size: 12px;
+      }
+    }
+  }
+  .PriceBox {
+    width: 700px;
+    height: 100px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid #f3f3f3;
+    .ItemPrice {
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      padding-top: 35px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  .PaymentBox {
+    width: 700px;
+    height: 190px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    border-bottom: 1px solid #f3f3f3;
+    display: flex;
+    .ItemPayment {
+      width: 300px;
+      margin: 0 auto;
+      text-align: left;
+      padding-top: 25px;
+      justify-content: space-around;
+      &__title{
+        font-weight: bold;
+      }
+      .PaymentChange {
+        margin: 5px 0;
+        padding-left: 150px;
+        color: #0095ee;
+        a {
+          display: flex;
+        }
+        &__btn {
+          text-decoration: none;
+          color: #0095ee;
+          padding-left: 3px;
+        }
+      }
+    }
+  }
+  .DeliveryBox {
+    width: 700px;
+    height: 180px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid #f3f3f3;
+    .ItemDelivery {
+      width: 300px;
+      margin: 0 auto;
+      text-align: left;
+      padding-top: 25px;
+      &__title {
+        font-weight: bold;
+        padding-bottom: 5px;
+      }
+      &__tel {
+        padding-top: 15px;
+      }
+    }
+  }
+  .BtnBox {
+    width: 700px;
+    height: 150px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    text-align: center;
+    .Btn {
+      width: 350px;
+      margin: 0 auto;
+      text-align: center;
+      &__title {
+        width: 100%;
+        background-color: #ea352d;
+        color: #fff;
+        margin-top: 24px;
+        font-size: 17px;
+        min-height: 48px;
+        padding: 0 24px;
+        font-weight: bold;
+        border-radius: 4px;
+        outline: none;
+        border: 1px solid #ccc;
+        cursor: pointer;
+      }
+      &__back {
+        margin-top: 24px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        color:  #5ab4bd;
+      }
+    }
+  }
+}
+
+// done.html.haml
+.BtnTop {
+  width: 700px;
+  height: 100px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  text-align: center;
+  .BtnIcon {
+    margin: 0 auto;
+    padding-top: 35px;
+    &__top {
+      background-color: #5ab4bd;
+      color: #fff;
+      font-size: 17px;
+      padding: 12px 70px;
+      font-weight: bold;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+  
+  
+}
+
+
+
+
+
+

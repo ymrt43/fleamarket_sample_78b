@@ -231,3 +231,44 @@
     }
   }
 }
+
+// show.html.haml
+.CreditMyPage {
+  background-color: #f8f8f8;
+  padding: 40px;
+  &__contents {
+    width: 700px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    h2 {
+      font-size: 24px;
+      text-align: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #dedede;
+    }
+    .form-content{
+      text-align: center;
+    }
+    .delete-btn {
+      text-decoration: none;
+      width: 40%;
+      background-color: #3CCACE;
+      border: 1px solid #3CCACE;
+      border-radius: 4px;
+      color: #fff;
+      line-height: 48px;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
+      margin: 32px 0;
+      font-weight: bold;
+    }
+
+  }
+}
+
+
+
+
+
+
