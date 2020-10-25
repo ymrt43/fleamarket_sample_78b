@@ -3,6 +3,7 @@
   .AccountPage
     .AccountPage__form
       %h2 会員情報入力 (2/2)
+      %hr/
       = form_with model: @user, scope: 'user', url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
         .FormField
           .FormField__label--normal
