@@ -82,50 +82,45 @@ RSpec.describe Item, type: :model do
         expect(@item.errors[:seller]).to include("を入力してください")
       end
 
-
-
-
-      # 以下エラー〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜
       # 画像が0枚では出品できない
       it "is invalid without a image" do
-        # @item.images.length == 0
         @item_no_img.valid?
-        expect(@item_no_img.errors[:image]).to include("を入力してください")
+        expect(@item_no_img.errors[:images]).to include("を入力してください")
       end
-
+      
       # 画像が11枚では出品できない
       it "is invalid with 11 image" do
-        # @item.images.length == 11
         @item_has_eleven.valid?
-        expect(@item_has_eleven.errors[:image]).to include("を入力してください")
+        expect(@item_has_eleven.errors[:images]).to include("は10文字以内で入力してください")
       end
-
+      
       # nameが41文字以上であれば出品できない
       it "is invalid with a name that has more than 41 characters " do
-        @item.name.length >= 41
+        @item.name = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         @item.valid?
         expect(@item.errors[:name]).to include("最大40文字まで使えます")
       end
 
       # descriptionが1001文字以上であれば出品できない
       it "is invalid with a description that has more than 1001 characters " do
-        @item.description.length >= 1001
+        # @item.description.length == 1001
+        @item.description = Faker::Lorem.characters(number: 1001)
         @item.valid?
-        expect(@item.errors[:name]).to include("最大1000文字まで使えます")
+        expect(@item.errors[:description]).to include("最大1000文字まで使えます")
       end
       
       # priceが10,000,000以上であれば出品できない
       it "is invalid with a price that includes more than 10,000,000" do
-        @item.price >= 10000000
+        @item.price = "10000000"
         @item.valid?
-        expect(@item.errors[:price]).to include("最大9999999まで使えます")
+        expect(@item.errors[:price]).to include("は9999999以下の値にしてください")
       end
 
       # priceが299以下であれば出品できない
       it "is invalid with a price that includes less than 299" do
-        @item.price <= 299
+        @item.price = "299"
         @item.valid?
-        expect(@item.errors[:price]).to include("最低300まで使えます")
+        expect(@item.errors[:price]).to include("は300以上の値にしてください")
       end
 
     end
