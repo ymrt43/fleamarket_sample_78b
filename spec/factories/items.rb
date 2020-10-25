@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :item do
     
     name                   {Faker::String.random}
-    description            {Faker::Lorem.characters(number: 1000)}
+    description            {Faker::Lorem.sentence}
     brand                  {Faker::String.random}
     state                  {Faker::Number.between(from: 1, to: 6)}
     fee                    {Faker::Number.between(from: 1, to: 2)}
