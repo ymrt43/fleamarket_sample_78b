@@ -48,14 +48,13 @@
           .FormField__label--normal
             = f.label "生年月日"
             %span.req 必須
-          .FormField__select--date
-            = f.select :birthyear, (1900..2020).to_a.reverse, {selected: 1980}
+          .FormField__select--short
+            = f.select :birthyear, (1900..2020).to_a.reverse, {selected: 1980}, { class: 'FormField__select--date'}
             年
-            = f.select :birthmonth, (1..12).to_a, {selected: 1}
+            = f.select :birthmonth, (1..12).to_a, {selected: 1}, { class: 'FormField__select--date'}
             月
-            = f.select :birthday, (1..31).to_a, {selected: 1}
+            = f.select :birthday, (1..31).to_a, {selected: 1}, { class: 'FormField__select--date'}
             日
-
         .actions
           = f.submit "次へ", class: 'UserButton'
   = render partial: 'items/marketFooter'
