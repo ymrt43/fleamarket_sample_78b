@@ -30,5 +30,4 @@ Rails.application.routes.draw do
       end
     end
   end
-  get 'items_buy', to: 'items#buy'
 end
