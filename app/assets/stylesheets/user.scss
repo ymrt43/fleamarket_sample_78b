@@ -35,26 +35,27 @@
   border-radius: 5px;
   display: flex;
   justify-content: center;
+  font-size: 16px;
 }
-.AccountPage__title {
-  width: 50%;
-  font-size: 14px;
-  font-weight: 200;
-  background-color: #ddd;
+// .AccountPage__title {
+//   width: 50%;
+//   font-size: 14px;
+//   font-weight: 200;
+//   background-color: #ddd;
 
-  h2 {
-    margin-bottom: 10px;
-    letter-spacing: 3px;
-    font-size: 40px;
-    &:after {
-      content: "";
-      display: block;
-      width: 60px;
-      margin-top: 5px;
-      border-bottom: 1px solid #38aef0;
-    }
-  }
-}
+//   h2 {
+//     margin-bottom: 10px;
+//     letter-spacing: 3px;
+//     font-size: 40px;
+//     &:after {
+//       content: "";
+//       display: block;
+//       width: 60px;
+//       margin-top: 5px;
+//       border-bottom: 1px solid #38aef0;
+//     }
+//   }
+// }
 
 .AccountPage__form {
   text-align: center;
@@ -129,16 +130,9 @@
       }
     }
   }
-  &__select--date {
+  &__select--short {
     display: flex;
     align-items: center;
-    select {
-      border: 1px solid #cccccc;
-      border-radius: 4px;
-      font-size: 14px;
-      padding: 10px;
-      margin: 10px;
-    }
     .field_with_errors {
       position: relative;
 
@@ -153,6 +147,20 @@
         background-color: #d65f4c;
       }
     }
+  }
+  &__select--date {
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 10px;
+    margin: 10px;
+}
+  &__select--prefecture {
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 10px;
   }
 }
 

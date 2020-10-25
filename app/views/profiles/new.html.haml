@@ -1,5 +1,5 @@
 .AccountMain
-  = render partial: 'items/header'
+  = render partial: 'items/marketHeader'
   .AccountPage
     .AccountPage__form
       %h2 会員情報入力 (2/2)
@@ -7,38 +7,36 @@
         .FormField
           .FormField__label--normal
             = f.label "郵便番号"
-            %i 必須
+            %span.req 必須
           .FormField__input--normal
             = f.text_field :postalcode, autofocus: true, placeholder: "例) 1234567"
         .FormField
           .FormField__label--normal
             = f.label "都道府県"
-            %i 必須
-          .FormField__select--date
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+            %span.req 必須
+          .FormField__select--short
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, { class: 'FormField__select--prefecture'}
 
         .FormField
           .FormField__label--normal
             = f.label "市区町村"
-            %i 必須
+            %span.req 必須
           .FormField__input--normal
             = f.text_field :city, autocomplete: "off", placeholder: "例) 大阪市北区"
         .FormField
           .FormField__label--normal
             = f.label "番地"
-            %i 必須
+            %span.req 必須
           .FormField__input--normal
             = f.text_field :house_number, autocomplete: "off", placeholder: "例) 扇町2-1-27"
         .FormField
           .FormField__label--normal
             = f.label "建物名"
-            -# %i 必須
           .FormField__input--normal
             = f.text_field :building_number, autocomplete: "off", placeholder: "例) スカイビル123号室"
         .FormField
           .FormField__label--normal
             = f.label "電話番号"
-            -# %i 必須
           .FormField__input--normal
             = f.text_field :dial_number, autofocus: true, placeholder: "例) 09012345678"
 
@@ -55,7 +53,6 @@
             = f.hidden_field :birthday, value: @user_params[:birthday]
             - birthdate = Date.new(@user_params[:birthyear].to_i, @user_params[:birthmonth].to_i, @user_params[:birthday].to_i)
             = f.hidden_field :birthdate, value: birthdate
-
         .actions
-          = f.submit "登録", class: 'Button UserButton'
-  = render partial: 'items/footer'
+          = f.submit "登録", class: 'UserButton'
+  = render partial: 'items/marketFooter'
