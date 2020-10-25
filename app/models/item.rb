@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   validates :images, presence: true, length: { minimum: 1, maximum: 10 }
   validates :name, presence: true, length: { maximum: 40, too_long: "最大%{count}文字まで使えます" }
   validates :description, presence: true, length: { maximum: 1000, too_long: "最大%{count}文字まで使えます" }
-  validates :price, presence: true, inclusion: 300..9999999
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates :state, :fee, :term, :prefecture, presence: true
 
   enum state: {
