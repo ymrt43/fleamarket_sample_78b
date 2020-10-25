@@ -8,15 +8,26 @@ FactoryBot.define do
     fee                    {Faker::Number.between(from: 1, to: 2)}
     term                   {Faker::Number.between(from: 1, to: 3)}
     price                  {Faker::Number.within(range: 300..9999999)}
-    category               {Category.all.sample}
     prefecture             {Prefecture.all.sample}
-    association :seller, factory: :user
-    association :buyer, factory: :user
+    association :seller
+    category
 
-    trait :with_nested_instances do
-      after(:create) do |item|
-        create :image, id: item.id
+    trait :with_ten_images do
+      after(:build) do |item|
+        10.times do
+          item.images << FactoryBot.build(:image, item: item)
+        end
       end
     end
+    
+    trait :with_eleven_images do
+      after(:build) do |item|
+        11.times do
+          item.images << FactoryBot.build(:image, item: item)
+        end
+      end
+    end
+
   end
+
 end
