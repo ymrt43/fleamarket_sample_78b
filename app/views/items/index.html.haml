@@ -97,7 +97,18 @@
         = link_to "#" do
           %h3.title 
             新規投稿商品
+      .wrappers
+        %ul.aa
+          %li.ab
+          %li.ab
+          %li.ab
+          %li.ab
+          %li.ab
+          %li.ab
       .ProductLists
+
+        
+
         - @items.each do |item|
           .ProductList
             = link_to item_path(id: item.id) do
