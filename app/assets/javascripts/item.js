@@ -25,7 +25,7 @@ $(function(){
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
   lastIndex = $('.ImageBox__fileGroup:last').data('index');
-  fileIndex.splice(0, lastIndex);
+  fileIndex.splice(0, lastIndex + 1);
 
   $('.hidden-destroy').hide();
 
@@ -91,4 +91,9 @@ $(document).ready(function(){
   const salesProfit = Math.floor(price - salesCommission)
   $('#salesCommission').text(`¥${salesCommission}`);
   $('#salesProfit').text(`¥${salesProfit}`);
+
+  var count = $('.ImageBox__preview').length;
+  if (count >= 10) {
+    $('.ImageBox__inputLabel').hide();
+  }
 });
