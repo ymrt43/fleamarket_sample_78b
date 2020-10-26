@@ -243,49 +243,78 @@
           }
         }
       }
-      .wrappers {
-        position: relative;
-        box-sizing: border-box;
-        width: 780px;
-        padding: 50px;
-        background-color:#ffffff;
-        .aa {
-          width: 780px;
-          background-color: white;
-          overflow-x: auto;
+
+      
+      // .wrappers {
+      //   position: relative;
+      //   box-sizing: border-box;
+      //   width: 100%;
+      //   padding: 50px;
+      //   background-color:#f8f8f8;
+      //   // margin: 0 auto;
+      //   .aa {
+      //     width: 780px;
+      //     height: 300px;
+      //     background-color: white;
+      //     overflow-x: auto;
+      //     margin: 0 auto;
         
-          /* method */
-          white-space: nowrap;
-          .ab {
-            width: 100px;
-            height: 100px;
-            background-color: orange;
-          
-            /* method */
-            display: inline-block;
-          }
-          .ab + .ab {
-            margin-left: 5px;
-          }
-          /* method */
-          .ab:first-child {
-            margin-left: 50px;
-          }
-          .ab:last-child {
-            margin-right: 50px;
-          }
-        }
-      }
+      //     /* method */
+      //     white-space: nowrap;
+      //     .ab {
+      //       width: 220px;
+      //       height: 300px;
+      //       background-color: orange;
+      //       /* method */
+      //       display: inline-block;
+      //     }
+      //     .ab + .ab {
+      //       margin-left: 5px;
+      //     }
+      //     /* method */
+      //     .ab:first-child {
+      //       margin-left: 50px;
+      //     }
+      //     .ab:last-child {
+      //       margin-right: 50px;
+      //     }
+      //   }
+      // }
+      // .horizontal-list {
+      //   margin: 0 auto;
+      //   overflow-x: auto;
+      //   white-space: nowrap;
+      //   -webkit-overflow-scrolling: touch;
+      //   width: 850px;
+      // }
+
+      
 
       .ProductLists {
-        width: 780px;
+        width: 900px;
         margin: 26px auto 0 auto;
         display: flex;
         justify-content: space-around;
 
         .ProductList {
-          width: 220px;
+          // width: 220px;
           display: inline-block;
+          margin: 0 auto;
+          overflow-x: auto;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+          // width: 1000px;
+          height: 260px;
+          .item {
+            /* 横スクロール用 */
+            display: inline-block;
+            /* 見た目調整 */
+            // height: 220px;
+            // width: 220px;
+            margin: 0 auto;
+            // font-size: 12px;
+            // background: rgba(255, 0, 0, 0.4);
+          }
           a {
             background-color: #ffffff;
             display: inline-block;
@@ -330,7 +359,7 @@
           }
           &__body {
             background-color: white;
-            color: #333;
+            color: #333333;
             padding: 16px;
             .name {
               overflow: hidden;
@@ -360,7 +389,6 @@
           }
         }
       }
-
     }
   }
   .PickupCategory:last-child {

@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.includes(:images)
+    @random = Item.order("RAND()").all
   end
 
   def new
