@@ -4,12 +4,12 @@
       マイページ
     %ul.MyPageMenu
       %li.MyPageMenu__list
-        = link_to "#" ,class:"MyPageMenu__list--info" do
+        = link_to new_item_path, class:"MyPageMenu__list--info" do
           出品する
         %i.MyPageMenu__icon
           = icon("fas", "angle-right")
       %li.MyPageMenu__list
-        = link_to "#", class:"MyPageMenu__list--info" do
+        %a.MyPageMenu__list--info
           出品した商品
         %i.MyPageMenu__icon
           = icon("fas", "angle-right")

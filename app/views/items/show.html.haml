@@ -28,14 +28,13 @@
               = image_tag @item.images[0].src.url, size:'560x346', class: "ItemMenu__list--big"
               %ul.ItemMenuSmall
                 %li.ItemMenuSmall__list
-                  = image_tag @item.images[0].src.url, size:'140x87', class: 'ItemMenuSmall__list--small'
-                %li.ItemMenuSmall__list
-                  = image_tag @item.images[0].src.url, size:'140x87', class: 'ItemMenuSmall__list--small'
+                  - @item.images.first(10).each do |image|
+                    = image_tag "#{image.src}", size:'140x87', class: 'ItemMenuSmall__list--small'
         .ItemPrice
           %span.ItemPrice__detail 
             = "¥#{@item.price}"
         .ItemTax
-          %span.ItemTax__detail (税込) 送料込み
+          %span.ItemTax__detail (税込)
         .ItemTitle 
           = @item.name
         .ItemTable

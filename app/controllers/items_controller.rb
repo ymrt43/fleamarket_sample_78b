@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @items = Item.all.includes(:images)
   end
 
   def destroy
