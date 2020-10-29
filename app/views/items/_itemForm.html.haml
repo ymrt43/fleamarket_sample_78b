@@ -9,7 +9,7 @@
         #ImageBox
           .ImageBox__show
             #previews
-              %label{for: "item_images_attributes_#{@item.images.count}_src", class: 'ImageBox__inputLabel', id: 'label-box-0'}
+              %label{for: "item_images_attributes_#{@item.images.count}_src", class: 'ImageBox__inputLabel', id: "label-box-#{@item.images.count}"}
                 .ImageBox__inputLabel--visible
                   = icon('fas', 'camera', class: "ImageBox__inputLabel--icon")
                   %p.ImageBox__inputLabel--hwToUp ファイルを選択
