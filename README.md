@@ -63,16 +63,19 @@
 |brand|string||
 |state|integer|null: false|
 |fee|integer|null: false|
-|area|integer|null: false|
+|prefecture|integer|null: false|
 |term|integer|null: false|
 |price|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
+|seller_id|integer|null: false, foreign_key: true|
+|buyer_id|integer|optional: true, foreign_key: true|
 
 ### Association
 - has_many :images
 - has_many :comments
-- belongs_to :user
+- belongs_to :seller, class_name: user
+- belongs_to :buyer, class_name: user
 - belongs_to :category
+- belongs_to_active_hash :prefecture
 
 ## imagesテーブル
 |Column|Type|Options|
