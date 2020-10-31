@@ -80,3 +80,6 @@ gem 'jquery-rails'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'payjp'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"

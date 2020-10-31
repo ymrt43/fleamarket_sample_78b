@@ -1,77 +1,80 @@
 .AccountMain {
-  background-color: #eeeeee;
+  background-color: #f8f8f8;
+}
 
-  .Button {
-    display: inline-block;
-    height: 50px;
-    padding: 0 30px;
-    line-height: 50px;
-    letter-spacing: 1px;
-    text-align: center;
-    border: none;
-    border-radius: 2px;
-    text-decoration: none;
+@mixin marketBtn($wid: 360px) {
+  width: $wid;
+  background-color: #3CCACE;
+  color: #ffffff;
+  font-size: 17px;
+  min-height: 48px;
+  padding: 0 24px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: .3s;
+  &:hover {
+    opacity: 0.8;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
   }
 }
+
+.actions {
+  margin: 32px auto;
+  text-align: center;
+  .UserButton {
+    @include marketBtn();
+  }
+}
+
 .AccountPage {
-  width: 980px;
-  margin: 60px auto;
-  padding: 60px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #ffffff;
   border-radius: 5px;
   display: flex;
-  // flex-flow: column;
   justify-content: center;
+  font-size: 16px;
 }
-.AccountPage__title {
-  width: 50%;
-  font-size: 14px;
-  font-weight: 200;
-  background-color: #ddd;
-  // display: flex;
+// .AccountPage__title {
+//   width: 50%;
+//   font-size: 14px;
+//   font-weight: 200;
+//   background-color: #ddd;
 
-  h2 {
-    margin-bottom: 10px;
-    letter-spacing: 3px;
-    font-size: 40px;
-    &:after {
-      content: "";
-      display: block;
-      width: 60px;
-      margin-top: 5px;
-      border-bottom: 1px solid #38aef0;
-    }
-  }
-
-  .Button {
-    margin-top: 40px;
-    color: #fff;
-    background-color: #ccc;
-  }
-}
+//   h2 {
+//     margin-bottom: 10px;
+//     letter-spacing: 3px;
+//     font-size: 40px;
+//     &:after {
+//       content: "";
+//       display: block;
+//       width: 60px;
+//       margin-top: 5px;
+//       border-bottom: 1px solid #38aef0;
+//     }
+//   }
+// }
 
 .AccountPage__form {
-  width: 50%;
   text-align: center;
   h2 {
-    margin-bottom: 10px;
-    letter-spacing: 3px;
-    font-size: 40px;
+    margin-bottom: 26px;
+    font-size: 22px;
+    font-weight: 600;
   }
 }
 
 .FormField {
-  margin-bottom: 10px;
-  text-align: left;
+  margin: 20px 0;
   &__label--normal {
-    padding: 10px 0;
-    letter-spacing: 1px;
-    font-size: 16px;
-    font-weight: 200;
-    i {
-      font-size: 11px;
-    }
+    text-align: left;
+    margin: 14px 0 5px;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4em;
     .field_with_errors {
       display: inline-block;
       color: #d65f4c;
@@ -79,12 +82,13 @@
     }
   }
   &__input--normal {
-
     input {
+      margin-bottom: 10px;
+      border: 1px solid #cccccc;
       box-sizing: border-box;
       width: 100%;
-      padding: 10px;
-      letter-spacing: 1px;
+      padding: 14px 10px;
+      border-radius: 4px;
     }
     .field_with_errors {
       position: relative;
@@ -105,11 +109,30 @@
     display: flex;
     input {
       box-sizing: border-box;
-      width: 50%;
-      padding: 10px;
+      border: 1px solid #cccccc;
+      width: calc(50% - 6px);
+      padding: 14px 10px;
       margin: 10px;
-      letter-spacing: 1px;
+      border-radius: 4px;
     }
+    .field_with_errors {
+      position: relative;
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 5px;
+        background-color: #d65f4c;
+      }
+    }
+  }
+  &__select--short {
+    display: flex;
+    align-items: center;
     .field_with_errors {
       position: relative;
 
@@ -126,39 +149,20 @@
     }
   }
   &__select--date {
-    display: flex;
-    align-items: center;
-    select {
-      // box-sizing: border-box;
-      // width: 50%;
-      font-size: 14px;
-      padding: 10px;
-      margin: 10px;
-      letter-spacing: 1px;
-    }
-    .field_with_errors {
-      position: relative;
-
-      &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 5px;
-        background-color: #d65f4c;
-      }
-    }
-  }
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 14px 10px;
+    margin: 10px;
+    width: 82px;
 }
-
-
-.UserButton {
-  margin-top: 20px;
-  width: 100%;
-  color: #fff;
-  background-color: #38aef0;
+  &__select--prefecture {
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 14px 10px;
+    margin-bottom: 10px;
+  }
 }
 
 #error_explanation {
@@ -184,4 +188,8 @@
     padding: 0;
     font-size: 13px;
   }
+}
+
+#new_user {
+  margin-top: 40px;
 }

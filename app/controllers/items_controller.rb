@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, except: [:index, :new, :create, :search]
-  before_action :set_parents, except: [:destroy, :buy]
+  before_action :set_parents, except: :destroy
   before_action :set_prefectures, only: [:new, :create, :edit, :update]
 
   def index
@@ -57,9 +57,6 @@ class ItemsController < ApplicationController
       end
     end
   end
-
-  def buy
-  end  
 
   private
 
