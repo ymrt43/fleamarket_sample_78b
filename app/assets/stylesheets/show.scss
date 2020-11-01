@@ -20,8 +20,6 @@
         .ItemBoxBody {
           margin: 16px 0 0;
           .ItemMenu {
-            display: flex;
-            position: relative;
             &__list {
               flex-direction: column;
               width: 560px;
@@ -33,15 +31,15 @@
                 height: 346px;
               }
               .ItemMenuSmall {
-                display: flex;
-                justify-content: center;
+                height: 105px;
                 margin-top: 10px;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
                 &__list {
-                  width: 25%;
-                  margin: 0 10Px 0 0;
+                  display: inline-block;
                   &--small {
                     object-fit: cover;
-                    height: 87px;
                   }
                 }
               }

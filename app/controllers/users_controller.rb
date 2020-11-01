@@ -1,16 +1,22 @@
 class UsersController < ApplicationController
+  before_action :set_parents
+
   def edit
-    @parents = Category.where(ancestry: nil)
   end
+
   def update
-    @parents = Category.where(ancestry: nil)
   end
 
   def index
-    @parents = Category.where(ancestry: nil)
   end
 
   def edit
+  end
+
+  private
+
+  def set_parents
     @parents = Category.where(ancestry: nil)
   end
+
 end

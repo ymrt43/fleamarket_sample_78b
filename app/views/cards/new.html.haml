@@ -1,6 +1,7 @@
 .CreditHeader 
   .Logo
-    = image_tag 'logo.png', size:'220x65', class: 'Logo__icon'
+    = link_to root_path do
+      = image_tag 'logo.png', size:'220x65', class: 'Logo__icon'
 
 %nav.BreadCrumbs
   %ul.Menu

@@ -4,27 +4,27 @@
       マイページ
     %ul.MyPageMenu
       %li.MyPageMenu__list
-        = link_to "#" ,class:"MyPageMenu__list--info" do
+        = link_to new_item_path, class:"MyPageMenu__list--display" do
           出品する
         %i.MyPageMenu__icon
           = icon("fas", "angle-right")
       %li.MyPageMenu__list
-        = link_to "#", class:"MyPageMenu__list--info" do
+        %a.MyPageMenu__list--info
           出品した商品
         %i.MyPageMenu__icon
           = icon("fas", "angle-right")
       %li.MyPageMenu__list
-        = link_to "#", class:"MyPageMenu__list--info" do
+        %a.MyPageMenu__list--info
           購入した商品
         %i.MyPageMenu__icon
           = icon("fas", "angle-right")
       %li.MyPageMenu__list
-        = link_to "#",class:"MyPageMenu__list--info" do
+        %a.MyPageMenu__list--info
           お問い合わせ
         %i.MyPageMenu__icon
           = icon("fas", "angle-right")
       %li.MyPageMenu__list
-        = link_to "#" ,class:"MyPageMenu__list--info"do
+        %a.MyPageMenu__list--info
           お知らせ
         %i.MyPageMenu__icon
           = icon("fas", "angle-right")
@@ -34,17 +34,17 @@
         %li.MyPageMenu__list
           - card = Card.where(user_id: current_user.id)
           - if card.blank?
-            = link_to new_card_path, class:"MyPageMenu__list--info"  do
+            = link_to new_card_path, class:"MyPageMenu__list--display"  do
               クレジットカード登録
             %i.MyPageMenu__icon
               = icon("fas", "angle-right")
           - else 
-            = link_to card_path(current_user), class:"MyPageMenu__list--info" do
+            = link_to card_path(current_user), class:"MyPageMenu__list--display" do
               クレジットカード詳細・削除
             %i.MyPageMenu__icon
               = icon("fas", "angle-right")
         %li.MyPageMenu__list
-          = link_to "/users/:id/edit" ,class:"MyPageMenu__list--info" do
+          = link_to "/users/:id/edit" ,class:"MyPageMenu__list--display" do
             ログアウト
           %i.MyPageMenu__icon
             = icon("fas", "angle-right")

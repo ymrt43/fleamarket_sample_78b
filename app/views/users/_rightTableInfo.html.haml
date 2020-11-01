@@ -2,7 +2,8 @@
   .UserInfo
     .UserInfo__pic
       = image_tag 'member_photo.png', size:'60x60', class:"img"
-    %p.UserInfo__name test_user
+    %p.UserInfo__name 
+      = current_user.name
   .Tab
     %input.Tab__btn{checked: "checked",id:"all",type:"radio",name:"tab_item"}
     %label.Tab__title{for:"all"} お知らせ

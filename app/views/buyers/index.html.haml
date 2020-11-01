@@ -28,7 +28,6 @@
         = @item.name
     .ItemDetailBox
       .ItemDetailBox__img
-        -# = image_tag 'product1.jpg',size:'100x100', class: 'ItemDetailBox__img--item'
         = image_tag @item.images[0].src.url, size:'120x100', class: "ItemDetail__name--img"
       .ItemDetailBox__price
         = "¥ #{@item.price}"

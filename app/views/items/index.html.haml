@@ -97,27 +97,29 @@
         = link_to "#" do
           %h3.title 
             新規投稿商品
+
       .ProductLists
-        - @items.each do |item|
-          .ProductList
-            = link_to item_path(id: item.id) do
-              %figure.ProductList__img
-                = image_tag item.images[0].src.url, class: 'category'
-                - if item.buyer_id.present?
-                  .ProductList__ItemsSold
-                    .ProductList__ItemsSold--inner 
-                      Sold
-              .ProductList__body
-                %h3.name
-                  = item.name
-                .details
-                  %ul
-                    %li 
-                      = "#{item.price}円"
-                    %li
-                      %i.fa.fa-star
-                        0
-                  %p (税込)
+        %ul.ProductList
+          - @items.each do |item|
+            %li.item
+              = link_to item_path(id: item.id) do
+                %figure.ProductList__img
+                  = image_tag item.images[0].src.url, class: 'category'
+                  - if item.buyer_id.present?
+                    .ProductList__ItemsSold
+                      .ProductList__ItemsSold--inner 
+                        Sold
+                .ProductList__body
+                  %h3.name
+                    = item.name
+                  .details
+                    %ul
+                      %li 
+                        = "#{item.price}円"
+                      %li
+                        %i.fa.fa-star
+                          0
+                    %p (税込)
 
   %section.PickupCategory
     %h2.head 
@@ -128,76 +130,27 @@
           %h3.title 
             アーカイバ
       .ProductLists
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag 'product1.jpg', class: 'category'
-            .ProductList__body
-              %h3.name
-                テスト
-              .details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star
-                      1
-                %p (税込)
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag 'product2.jpg', class: 'category'
-            .ProductList__body
-              %h3.name
-                テスト
-              .details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star
-                      1
-                %p (税込)
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag 'product3.png', class: 'category'
-            .ProductList__body
-              %h3.name
-                テスト
-              .details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star
-                      1
-                %p (税込)
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag 'product4.png', class: 'category'
-            .ProductList__body
-              %h3.name
-                テスト
-              .details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star
-                      1
-                %p (税込)
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag 'product5.png', class: 'category'
-            .ProductList__body
-              %h3.name
-                テスト
-              .details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star
-                      1
-                %p (税込)
+        %ul.ProductList
+          - @random.each do |item|
+            %li.item
+              = link_to item_path(id: item.id) do
+                %figure.ProductList__img
+                  = image_tag item.images[0].src.url, class: 'category'
+                  - if item.buyer_id.present?
+                    .ProductList__ItemsSold
+                      .ProductList__ItemsSold--inner 
+                        Sold
+                .ProductList__body
+                  %h3.name
+                    = item.name
+                  .details
+                    %ul
+                      %li 
+                        = "#{item.price}円"
+                      %li
+                        %i.fa.fa-star
+                          0
+                    %p (税込)
 
 = render partial: 'appBanner'
 = render partial: 'footer'
