@@ -5,17 +5,17 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
+|name|string|null: false, index: true|
 |email|string|null: false, unique:true|
 |password|string|null: false|
-|age|integer|null: false|
 
 ### Association
 - has_one :profile
 - has_one :address
-- has_many :creditcards
-- has_many :comments
-- has_many :items
+- has_one :card
+- has_many :buyed_items, foreign_key: "buyer_id", class_name: "Item"
+- has_many :sell_items, -> { where("buyer_id is NULL") }, foreign_key: "seller_id", class_name: "Item"
+- has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "seller_id", class_name: "Item"
 
 
 ## profilesテーブル
@@ -29,27 +29,29 @@
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
+- belongs_to :user, optional: true
 
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |postalcode|integer|null: false|
-|prefecture|string|null: false|
 |city|string|null: false|
 |house_number|string|null: false|
-|building_name|string||
-|dial_number|string||
+|building_number|string|null: false|
+|dial_number|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
+|prefecture_id|string|null: false|
 
 ### Association
-- belongs_to :user
+- belongs_to :user, optional: true
+- belongs_to_active_hash :prefecture
 
-## creditcardsテーブル
+## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|info|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 
 ### Association
 - belongs_to :user
@@ -57,23 +59,22 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false, limit: 40, index: true|
 |description|text|null: false|
-|category_id|integer|null: false, foreign_key: true|
 |brand|string||
 |state|integer|null: false|
 |fee|integer|null: false|
-|prefecture|integer|null: false|
+|prefecture_id|integer|null: false|
 |term|integer|null: false|
 |price|integer|null: false|
 |seller_id|integer|null: false, foreign_key: true|
-|buyer_id|integer|optional: true, foreign_key: true|
+|buyer_id|integer|foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :images
-- has_many :comments
-- belongs_to :seller, class_name: user
-- belongs_to :buyer, class_name: user
+- belongs_to :seller, class_name: user, foreign_key: "seller_id"
+- belongs_to :buyer, class_name: user, optional: true, foreign_key: "buyer_id"
 - belongs_to :category
 - belongs_to_active_hash :prefecture
 
@@ -95,13 +96,3 @@
 ### Association
 - has_many :items
 - has_ancestry
-
-## commentsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|message|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to :item
