@@ -1,5 +1,6 @@
 .AccountMain {
   background-color: #f8f8f8;
+  width: 100%;
 }
 
 @mixin marketBtn($wid: 360px) {
@@ -9,7 +10,6 @@
   font-size: 17px;
   min-height: 48px;
   padding: 0 24px;
-  font-weight: 600;
   border-radius: 4px;
   border: 1px solid transparent;
   transition: .3s;
@@ -37,26 +37,6 @@
   justify-content: center;
   font-size: 16px;
 }
-// .AccountPage__title {
-//   width: 50%;
-//   font-size: 14px;
-//   font-weight: 200;
-//   background-color: #ddd;
-
-//   h2 {
-//     margin-bottom: 10px;
-//     letter-spacing: 3px;
-//     font-size: 40px;
-//     &:after {
-//       content: "";
-//       display: block;
-//       width: 60px;
-//       margin-top: 5px;
-//       border-bottom: 1px solid #38aef0;
-//     }
-//   }
-// }
-
 .AccountPage__form {
   text-align: center;
   h2 {
@@ -67,7 +47,7 @@
 }
 
 .FormField {
-  margin: 20px 0;
+
   &__label--normal {
     text-align: left;
     margin: 14px 0 5px;
@@ -110,7 +90,7 @@
     input {
       box-sizing: border-box;
       border: 1px solid #cccccc;
-      width: calc(50% - 6px);
+      width: calc(180px - 20px);
       padding: 14px 10px;
       margin: 10px;
       border-radius: 4px;
@@ -165,6 +145,10 @@
   }
 }
 
+#new_user {
+  margin: 5px auto;
+}
+
 #error_explanation {
   margin: 20px 0;
   padding: 20px 30px;
@@ -190,6 +174,128 @@
   }
 }
 
-#new_user {
-  margin-top: 40px;
+// 以下ログインページのSNS認証
+.SignUpBox {
+  padding: 20px 16px;
+  border-bottom: 2px solid #f5f5f5;
+  background-color: #ffffff;
+  max-width: 456px;
+  margin: 0 auto;
+  border-radius: 4px;
+  p {
+    text-align: center;
+    font-size: 14px;
+    color: #333333;
+  }
+}
+.SignInBox {
+  padding: 5px 16px;
+  background-color: #ffffff;
+  max-width: 456px;
+  margin: 0 auto;
+  &__formField {
+    padding: 10px 0;
+  }
+  &__form {
+    text-align: center;
+  }
+  &__input {
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    width: 343px;
+    padding: 14px 10px;
+    border-radius: 4px;
+  }
+  &__btn {
+    text-align: center;
+    &--logIn {
+      @include marketBtn(343px);
+    }
+    }
+}
+
+// 以下SNS認証ページ用
+@mixin linkBlock($col: #ffffff) {
+  color: $col;
+  border-radius: 4px;
+  line-height: 48px;
+  transition: .3s;
+  &:hover {
+    opacity: 0.8;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
+  }
+}
+
+.Registration {
+  &__title {
+    font-size: 22px;
+    padding: 32px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 550;
+    color: #333333;
+  }
+  &__selectBoxes {
+    padding: 24px 16px 40px;
+    border-top: 1px solid #f5f5f5;
+  }
+  &__selectBox {
+    max-width: 343px;
+    margin: 15px auto 0;
+    height: 50px;
+    &--new {
+      background-color: #0099e8;
+      border: 1px solid transparent;
+      @include linkBlock();
+    }
+    &--withE {
+      background-color: #3CCACE;
+      border: 1px solid transparent;
+      @include linkBlock();
+    }
+    &--withG {
+      background-color: #ffffff;
+      border: 1px solid #979797;
+      @include linkBlock(#333333);
+    }
+    &--withF {
+      background-color: #385185;
+      border: 1px solid transparent;
+      @include linkBlock();
+    }
+    &--icon {
+      font-size: 1.5em;
+      line-height: 48px;
+      margin: 0 10px 0 20px;
+    }
+    &--iconG {
+      margin: 13px 10px 0 20px;
+    }
+    &--text {
+      text-align: center;
+      width: 260px;
+      font-size: 0.9em;
+      &--fromLogIn {
+        text-align: center;
+        width: 343px;
+        font-size: 0.9em;
+      }
+    }
+  }
+  &__link {
+    display: flex;
+    text-decoration: none;
+  }
+  &__rules {
+    margin: 0 auto;
+    padding-bottom: 50px;
+    width: 343px;
+    line-height: 1.5;
+    color: #888888;
+  }
+  &__fromLogIn {
+    text-decoration: none;
+    text-align: center;
+  }
 }

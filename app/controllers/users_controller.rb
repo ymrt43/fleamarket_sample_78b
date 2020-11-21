@@ -13,4 +13,8 @@ class UsersController < ApplicationController
   def edit
     @parents = Category.where(ancestry: nil)
   end
+
+  def signup
+  end
+
 end

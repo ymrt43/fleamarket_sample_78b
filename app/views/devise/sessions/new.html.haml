@@ -1,14 +1,28 @@
 .AccountMain
   = render partial: 'items/marketHeader'
-  .AccountPage
-    .AccountPage__form
+  .SignUpBox
+    %p アカウントをお持ちでない方はこちら
+    .Registration__selectBox
+      = link_to signup_users_path, class: 'Registration__link Registration__selectBox--new' do
+        .Registration__selectBox--text--fromLogIn
+          新規会員登録
+  .SignInBox
+    .Registration__selectBox
+      = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: 'Registration__link Registration__selectBox--withG' do
+        = image_tag 'google_original_logo_icon.png', size: '20x20', class: "Registration__selectBox--iconG"
+        .Registration__selectBox--text
+          Googleでログイン
+    .Registration__selectBox
+      = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'Registration__link Registration__selectBox--withF' do
+        = icon('fab', 'facebook-square', class: "Registration__selectBox--icon")
+        .Registration__selectBox--text
+          Facebookでログイン
+  .SignInBox
+    .SignInBox__formField
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .FormField
-          .FormField__input--normal
-            = f.email_field :email, autofocus: true, placeholder: "メールアドレス"
-          .FormField
-            .FormField__input--normal
-              = f.password_field :password, autocomplete: "off", placeholder: "パスワード"
-          .actions
-            = f.submit "ログイン", class: 'Button UserButton'
+        .SignInBox__form
+          = f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: 'SignInBox__input SignInBox__form--email'
+          = f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: 'SignInBox__input SignInBox__form--password'
+        .SignInBox__btn
+          = f.submit "ログイン", class: 'SignInBox__btn--logIn'
   = render partial: 'items/marketFooter'
